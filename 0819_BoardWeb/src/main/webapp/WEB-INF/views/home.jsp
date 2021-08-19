@@ -8,11 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
+
 <P>  The time on the server is ${serverTime}. </P>
-
-<b>Presentation</b> - View( jsp )
-<b>Business</b> - Spring ( ioc, Aop, Injection )
-<b>Persistance</b> - Model ( jdbc, Mybaits, Jpa )
-
 </body>
 </html>

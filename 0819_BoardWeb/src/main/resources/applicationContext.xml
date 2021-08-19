@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="tv" class="polymorphism.SamsungTV" >
+		<!-- 생성자 의존 주입 -->
+		<!-- 
+		<constructor-arg ref="apple"></constructor-arg>
+		<constructor-arg value="2700000"></constructor-arg>
+		 -->
+			<!-- 기본형타입 : value 사용 -->
+		<!-- Setter 의존 주입 -->
+		<!--  name : set 메소드의 이름만 , 소문자로 작성 -->
+		<property name="speaker" ref="apple"></property>
+		<property name="price" value="300000"></property> 
+			
+	</bean>
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+
+	<bean id="apple" class="polymorphism.AppleSpeaker"></bean>
+
+</beans>
