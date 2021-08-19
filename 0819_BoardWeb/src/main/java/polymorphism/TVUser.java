@@ -10,7 +10,8 @@ public class TVUser {
 		// TODO Auto-generated method stub
 		
 		// xml 파일 생성
-		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
+		AbstractApplicationContext factory = 
+				new GenericXmlApplicationContext("applicationContext.xml");
 		
 		TV tv = (SamsungTV) factory.getBean("tv");// xml의 id값 가져옴
 				// Bean의 class 값이 SamsungTv이기때문에 Lg는 오류발생. TV는 가능(부모)
