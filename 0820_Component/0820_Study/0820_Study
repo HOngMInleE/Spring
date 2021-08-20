@@ -1,0 +1,8 @@
+비지니스 컴포넌트
+
+ @ (이노테이션) + ("id값") : 역할에 따라 구분. 기능은 다 같음
+ 
+xxxxVO
+xxxxDAO
+xxxxService // VMC 중 M 과같음 (DAO) // Interface 로 처리
+xxxxServiceimpl // ActionController 와 같음 (Controll) // DAO를 사용 
