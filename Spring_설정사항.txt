@@ -13,3 +13,17 @@ pom.xml -> <java-version>1.8</java-version>						 "1.8"
                     <target>1.8</target>							"1.8"
 
 web.xml -> <web-app 속성값은 건들면 안됩니다.> 내의 태그들 삭제 </web-app>
+
+Project -> 우클릭 -> properties -> BuildPath -> C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib (oracle설치된 곳)      "ojdbc6.jar 추가"
+
+Project -> 우클릭 -> properties -> Deployment Assembly -> Add -> Java Build Path Entries -> next ->            "ojdbc6.jar 추가"
+
+
+// 객체 scan 방법 
+// xml 생성
+src/main/resources -> 우클릭 -> new -> other ->  Spring Bean Configuration File -> name, etc.. ->
+
+	xml FIle -> 하단 바 -> Namespaces -> context 체크 -> <context:component-scan package="상위 패키지 까지만 작성">
+
+// test Folder Update 
+Project -> 우클릭 -> Maven -> Update Project -> 프로젝트 선택 -> Ok
