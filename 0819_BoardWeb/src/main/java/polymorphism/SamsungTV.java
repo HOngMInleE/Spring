@@ -1,5 +1,6 @@
 package polymorphism;
 
+
 public class SamsungTV implements TV{
 
 	private Speaker speaker;

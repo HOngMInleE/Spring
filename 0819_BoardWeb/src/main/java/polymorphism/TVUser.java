@@ -13,7 +13,7 @@ public class TVUser {
 		AbstractApplicationContext factory = 
 				new GenericXmlApplicationContext("applicationContext.xml");
 		
-		TV tv = (SamsungTV) factory.getBean("tv");// xml의 id값 가져옴
+		TV tv = (TV) factory.getBean("tv");// xml의 id값 가져옴
 				// Bean의 class 값이 SamsungTv이기때문에 Lg는 오류발생. TV는 가능(부모)
 //		TV tv2 = (TV) factory.getBean("tv");
 //		TV tv3 = (TV) factory.getBean("tv");
