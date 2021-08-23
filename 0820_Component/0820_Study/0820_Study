@@ -9,4 +9,5 @@ xxxxServiceimpl // ActionController 와 같음 (Controll) // DAO를 사용
 
 //	@Autowired // 자동 (의존) 주입	//타입으로 구분  /apple, sony 두개의 speaker 타입이 존재해 오류 발생
 //	@Qualifier("apple") // 한정자
-//	@Resource(name="sony") // 한정, 의존 주입 
+//	@Resource(name="sony") // 한정, 의존 주입
+ 
