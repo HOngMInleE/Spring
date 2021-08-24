@@ -13,7 +13,7 @@ public class BoardServiceImpl implements BoardService{
 	// BoardDAO를 사용
 	
 	@Autowired // boardDAO 타입 하나만 쓰기때문에 오류 발생 안함.
-	BoardDAO boardDAO;
+	private BoardDAO boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO vo) {

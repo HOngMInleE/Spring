@@ -1,5 +1,6 @@
 package com.springbook.biz.board;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.context.support.AbstractApplicationContext;
@@ -9,8 +10,11 @@ public class BoardServiceClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		// 1. Spring Container 구동
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		
+		// 2. Spring 컨테이너로부터 BoardServiceImpl 객체를 Lookup한다.
 		BoardService boardService = (BoardService) factory.getBean("boardService");
 		
 		BoardVO vo = new BoardVO(); 
@@ -49,13 +53,16 @@ public class BoardServiceClient {
 					break;
 				case 2 :
 					boardService.getBoardList(vo);
+//					List<BoardVO> boardList = boardService.getBoardList(vo);
+//					for (BoardVO board : boardList) {
+//						System.out.println("--->" + board.toString());
+//					}
 					break;
 				case 3 : 
 					System.out.print("조회 글 번호 입력 : ");
 					seq = sc.nextInt();
 					vo.setSeq(seq);
 					boardService.getBoard(vo);
-					
 					break;
 				case 4 :
 					System.out.print("수정 글 번호 입력 : ");
