@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	
+<!-- AOP에 대한 설정 -->
+
+	<!-- 1. 빈에 추가 (객체 생성)  -->
+	<!-- <bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
+	<bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean>		
+	<bean id="logBefore" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	
+	<!-- 2. Log4jAdvice를 공통관심사(AOP)로 등록 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut"/>
+		
+		<aop:aspect ref="logBefore"> <!-- bean i d 값으로 지정 -->
+				<!-- 실제 공통관심사 메소드 -->			<!-- 대상  -->
+			<aop:before method="beforeLog" pointcut-ref="allPointcut"/>
+		</aop:aspect>
+	</aop:config>
+
+	
+</beans>
