@@ -29,6 +29,9 @@ public class BoardServiceImpl implements BoardService{
 		public void insertBoard(BoardVO vo) {
 //			log.pringLog();
 //			log.pringLogging();
+//			if (vo.getSeq() == 0) {  // 데이터를 저장해주지않고, 자동으로 넘어온 값이 0이다 
+//				throw new IllegalArgumentException("0번 글을 등록할 수 없습니다.");
+//			}
 			boardDAO.insertBoard(vo);
 		}
 

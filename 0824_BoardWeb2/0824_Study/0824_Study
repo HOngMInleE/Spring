@@ -44,7 +44,7 @@
 	// Advice의 동작 시점 
 	// ex) <aop:after method=""
 		before			: pointcut의 동작 전
-		after			: pointcut의 동작 후
+		after			: pointcut의 동작 후 (예외 발생 여부에 상관없이 무조건 수행되는 어드바이스)
 		after-returning	: pointcut이 성공적으로 동작하고 리턴되면 실행
 		after-throwing	: pointcut이 예외가 발생하면 실행 
 		around			: pointcut의 동작 전/후 (2번 실행)
