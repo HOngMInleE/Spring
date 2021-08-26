@@ -102,7 +102,7 @@ public class BoardDAO {
 					vo.setRegDate(rs.getDate("regdate"));
 					vo.setCnt(rs.getInt("cnt"));
 				}
-				System.out.println("---> " + vo.toString());
+//				System.out.println("---> " + vo.toString());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -133,7 +133,7 @@ public class BoardDAO {
 					
 					boardList.add(vo);
 					
-					System.out.println("---> " + vo.toString());
+//					System.out.println("---> " + vo.toString());
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

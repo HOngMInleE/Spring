@@ -95,8 +95,8 @@ xxxxServiceimpl // ActionController 와 같음 (Controll) // DAO를 사용
 		
 		*update(...)		// insert,update,delete 역할
 		*queryForInt(...) 	// select 역할	
-		*queryForObject(...) // select 역할
-		*query(...)			 // select 역할
+		*queryForObject(...) // select 역할 / 하나의 객체(Object) 결과 값이 나올 때 사용하는 메소드(객체 그대로 반환)
+		*query(...)			 // select 역할  / 여러목록을 조회할 때 사용 (List로 반환해준다)
 
 
 
