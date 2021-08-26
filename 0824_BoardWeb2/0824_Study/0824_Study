@@ -56,3 +56,59 @@
 	< aop:aspect : Pointcut에 Advice를 연결
 	// Pointcut + Advice
 
+
+
+=================================================================================================
+비지니스 컴포넌트
+
+ @ (이노테이션) + ("id값") : 역할에 따라 구분. 기능은 다 같음
+ 
+xxxxVO
+xxxxDAO
+xxxxService // VMC 중 M 과같음 (DAO) // Interface 로 처리
+xxxxServiceimpl // ActionController 와 같음 (Controll) // DAO를 사용
+
+	//	@Autowired // 자동 (의존) 주입	//타입으로 구분  /apple, sony 두개의 speaker 타입이 존재해 오류 발생
+	//	@Qualifier("apple") // 한정자
+	//	@Resource(name="sony") // 한정, 의존 주입 
+
+
+// AOP 관련 어노테이션
+	*Aspect
+	*Pointcut
+	*Before				: pointcut의 동작 전
+	*AfterReturning		: pointcut이 성공적으로 동작하고 리턴되면 실행			
+	*AfterThrowing		: pointcut이 예외가 발생하면 실행 
+	*After				: pointcut의 동작 후 (예외 발생 여부에 상관없이 무조건 수행되는 어드바이스)
+	*Around				: pointcut의 동작 전/후 (2번 실행)
+
+
+*Spring JDBC
+	**spring-jdbc
+	**commons-dbcp
+
+*<bean>등록
+	*database.properties
+	
+	*jdbcTempate
+		*method					쿼리 역할
+		
+		*update(...)		// insert,update,delete 역할
+		*queryForInt(...) 	// select 역할	
+		*queryForObject(...) // select 역할
+		*query(...)			 // select 역할
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

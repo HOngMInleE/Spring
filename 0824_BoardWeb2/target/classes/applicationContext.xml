@@ -9,8 +9,27 @@
 
 	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
 	
+	
+<!-- DataSource 설정 -->
+	<!-- properties파일을 가져오기 위해 스프링컨테이너에 등록 -->
+	<context:property-placeholder location="classpath:config/database.properties"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="8" />
+		<property name="maxIdle" value="8" />
+	</bean>
+	
+	
+	
 <!-- AOP에 대한 설정 -->
 
+	<!-- 어노테이션 사용시 자동으로 설정해줌 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 	<!-- 1. 빈에 추가 (객체 생성)  -->
 	<!-- 
 	<bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> 
@@ -21,7 +40,6 @@
 	<bean id="around" class="com.springbook.biz.common.AroundAdvice"></bean>
 	 -->
 	
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<!-- 2. Log4jAdvice를 공통관심사(AOP)로 등록 -->
 	<!-- 

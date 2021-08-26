@@ -14,6 +14,25 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
+		<!-- Spring DBCP 추가한 것 -->
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <!-- 버젼 명시방식 -->
+		    <version>5.0.7.RELEASE</version>
+		    <!-- 
+		    	현재 사용하는 Spring과 같은 버젼 사용 
+		    <version>${org.springframework-version}</version>
+		    -->
+		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,7 +59,8 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<!-- 추가한 것
+	 https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
