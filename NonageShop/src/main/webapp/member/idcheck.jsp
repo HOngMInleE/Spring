@@ -29,18 +29,17 @@
 	}
 </style>
 <script type="text/javascript">
-	function idok() {
-		opener.formm.id.value=${id};
-		opener.formm.reid.value=${id};
+	function idok(){
+		opener.formm.id.value="${id}"; 
+		opener.formm.reid.value="${id}";
 		self.close();
 	}
-
 </script>
 </head>
 <body>
 	<div id="wrap">
 		<h1>ID 중복 확인</h1>
-		<form method="post" name="formm" action="command=id_check_form" style="margin-right:0">
+		<form method="post" name="formm" action="NonageServlet?command=id_check_form" style="margin-right:0">
 			User ID <input type="text" name="id" value="">
 					<input type="submit" value="검색" class="submit">
 					<br>

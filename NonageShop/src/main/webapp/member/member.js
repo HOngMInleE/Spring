@@ -32,7 +32,7 @@ function idcheck() {
 	var url = "NonageServlet?command=id_check_form&id="
 			+ document.formm.id.value;
 	window.open(url, "_blank_1",
-					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=370, height=250");
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=400px, height=250px");
 }
 
 function post_zip() {
