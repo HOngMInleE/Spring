@@ -13,6 +13,7 @@ public class BoardDAOSpring {
 
 	// a라는 클래스가 b라는 클래스를 사용하기 위해서 관계설정, 주입을 받아야한다.
 		// 생성자, setter메소드, 자동의존주입(xmlFile이용) 방식이 존재.
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	

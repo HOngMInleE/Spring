@@ -65,6 +65,8 @@ public class BoardServiceClient {
 				case 3 : 
 					System.out.print("조회 글 번호 입력 : ");
 					seq = sc.nextInt();
+//					sc.nextLine(); // 남겨진 개행문자 입력 처리
+					
 					vo.setSeq(seq);
 					boardService.getBoard(vo);
 					System.out.println(vo.toString());
@@ -81,8 +83,13 @@ public class BoardServiceClient {
 					System.out.print("글 내용 : ");
 					content = sc.nextLine();
 					vo.setContent(content);
+					
 					boardService.updateBoard(vo);
-					boardService.getBoardList(vo);
+					List<BoardVO> boardList = boardService.getBoardList(vo);
+					System.out.println();
+					for (BoardVO board : boardList) {
+						System.out.println("--->" + board.toString());
+					}
 					break;
 				case 5 :
 					System.out.print("삭제 글 번호 입력 : ");
