@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Nonage Shop</title>
 <link href="css/shopping.css" rel="stylesheet">
-<script type="text/javascript" src = "member/member.js"></script>
+<script type="text/javascript" src = "member/member.js?ver=1"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -22,8 +22,8 @@
 			<nav id="catagory_menu"> 
 		    	<ul>
 		    		<c:choose>
-		    			<c:when test="${empty sessionScope.loginUser}">
-		    				<!--  로그인 전 start -->
+		    			 <c:when test="${empty sessionScope.loginUser}">
+		    			<!--로그인 전-->
 		    				<li>
 		    					<a href="NonageServlet?command=login_form" style="width:110px;">Login(Customer</a>   
 					     		<a href="NonageServlet?command=admin_login_form" style="width:110px;">| Admin)</a>
@@ -32,18 +32,16 @@
 				     		<li>
 				     			<a href="NonageServlet?command=contract">Join</a>
 				     		</li>
-			     		<!--  로그인 전 end -->
      					</c:when>
      					
 			     		<c:otherwise>
-			     		<!--  로그인 후 start -->
+			     		<!--로그인 후-->
 				     		<li style="color:orange">
 					        	${sessionScope.loginUser.name}(${sessionScope.loginUser.id})
 					       	</li>
 					       	<li>
-					       		<a href="NonageServlet?command=logout">Log out<</a>
+					       		<a href="NonageServlet?command=logout">Log out</a>
 					       	</li>
-				       	<!--  로그인 후 end -->
 				       	</c:otherwise>       
 		       		</c:choose>
 			       	<li> / </li>

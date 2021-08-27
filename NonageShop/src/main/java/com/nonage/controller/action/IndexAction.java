@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.nonage.dao.ProductDAO;
 import com.nonage.dto.ProductVO;
@@ -24,6 +25,12 @@ public class IndexAction implements Action {
 		
 		request.setAttribute("newProductList", newProductList);
 		request.setAttribute("bestProductList", bestProductList);
+		
+//		HttpSession session = request.getSession(false);
+//		
+//		if(session != null) {
+//			session.invalidate();
+//		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);

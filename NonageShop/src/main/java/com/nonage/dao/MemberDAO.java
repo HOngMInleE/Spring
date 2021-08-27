@@ -76,7 +76,36 @@ public class MemberDAO {
 		return result;
 	}// insertMember()
 	
-	
+	// 회원 정보 얻어오기
+	public MemberVO getMember(String id) {
+		String sql = "select * from member where id = ?";
+		MemberVO member = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				member = new MemberVO();
+				member.setId(rs.getString("id"));
+				member.setPwd(rs.getString("pwd"));
+				member.setName(rs.getString("name"));
+				member.setEmail(rs.getString("email"));
+				member.setZipNum(rs.getString("zip_num"));
+				member.setAddress(rs.getString("address"));
+				member.setPhone(rs.getString("phone"));
+				member.setUseyn(rs.getString("useyn"));
+				member.setIndate(rs.getTimestamp("indate"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getMember()오류");
+		}finally {
+			DBManager.close(conn, pstmt,rs);
+		}
+		return member;
+	}// getMember()
 	
 	
 	
