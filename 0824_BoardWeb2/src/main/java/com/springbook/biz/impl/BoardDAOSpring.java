@@ -28,6 +28,7 @@ public class BoardDAOSpring {
 	public void insertBoard(BoardVO vo) {
 		System.out.println("===> Spring JDBC로 insertBoard() 기능 처리");
 		jdbcTemplate.update(Board_insert,vo.getTitle(),vo.getWriter(),vo.getContent());
+//		jdbcTemplate.update(Board_insert,vo.getSeq(),vo.getTitle(),vo.getWriter(),vo.getContent());
 	}// insertBoard()
 	
 	public List<BoardVO> getBoardList(BoardVO vo) {
@@ -51,11 +52,8 @@ public class BoardDAOSpring {
 	}// deleteBoard()
 	
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println();
 		System.out.println("===> Spring JDBC로 getBoard() 기능 처리");
-		
 		Object[] args = { vo.getSeq() };
-		
 		return jdbcTemplate.queryForObject(Board_get, args, new BoardRowMapper());
 	}
 	

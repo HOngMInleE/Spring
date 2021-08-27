@@ -49,6 +49,10 @@ public class BoardServiceClient {
 					writer = sc.nextLine();
 					System.out.print("글 내용 : ");
 					content = sc.nextLine();
+					
+//					vo.setSeq(seq);// transaction 테스트위해 작성
+					// 실행 중 문제가 생겨서 transaction이 롤백함.
+					
 					vo.setTitle(title);
 					vo.setWriter(writer);
 					vo.setContent(content);
@@ -64,10 +68,10 @@ public class BoardServiceClient {
 					break;
 				case 3 : 
 					System.out.print("조회 글 번호 입력 : ");
-					seq = sc.nextInt();
+//					seq = sc.nextInt();
 //					sc.nextLine(); // 남겨진 개행문자 입력 처리
 					
-					vo.setSeq(seq);
+					vo.setSeq(9);
 					boardService.getBoard(vo);
 					System.out.println(vo.toString());
 					break;
@@ -85,11 +89,6 @@ public class BoardServiceClient {
 					vo.setContent(content);
 					
 					boardService.updateBoard(vo);
-					List<BoardVO> boardList = boardService.getBoardList(vo);
-					System.out.println();
-					for (BoardVO board : boardList) {
-						System.out.println("--->" + board.toString());
-					}
 					break;
 				case 5 :
 					System.out.print("삭제 글 번호 입력 : ");

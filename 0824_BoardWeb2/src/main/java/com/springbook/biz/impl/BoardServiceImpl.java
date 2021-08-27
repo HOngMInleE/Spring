@@ -35,6 +35,7 @@ public class BoardServiceImpl implements BoardService{
 //				throw new IllegalArgumentException("0번 글을 등록할 수 없습니다.");
 //			}
 			boardDAO.insertBoard(vo);
+//			boardDAO.insertBoard(vo); // transaction / Context.xml파일 수정후 테스트위해 생성
 		}
 
 		@Override
