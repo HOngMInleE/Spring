@@ -17,8 +17,8 @@ public class BoardDAOSpring {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private final String Board_insert = "insert into board1(seq, title, writer, content, regdate) "
-			+ "values((select nvl(max(seq),0) + 1 from board1), ? ,? ,?, sysdate)";
+	private final String Board_insert = "insert into board1(seq, title, writer, content) "
+			+ "values((select nvl(max(seq),0) + 1 from board1), ? ,? ,?)";
 	private final String Board_update = "update board1 set title=?, content=? where seq=?";
 	private final String Board_delete = "delete board1 where seq=?";
 	private final String Board_get = "select * from board1 where seq=?";

@@ -70,8 +70,7 @@ public class BoardServiceClient {
 					System.out.print("조회 글 번호 입력 : ");
 //					seq = sc.nextInt();
 //					sc.nextLine(); // 남겨진 개행문자 입력 처리
-					
-					vo.setSeq(9);
+//					vo.setSeq(9);
 					boardService.getBoard(vo);
 					System.out.println(vo.toString());
 					break;
