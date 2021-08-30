@@ -19,7 +19,6 @@ public class BoardServiceImpl implements BoardService{
 		@Override
 		public void insertBoard(BoardVO vo) {
 			boardDAO.insertBoard(vo);
-//			boardDAO.insertBoard(vo); // transaction / Context.xml파일 수정후 테스트위해 생성
 		}
 
 		@Override

@@ -25,7 +25,6 @@ public class AroundAdvice {
 		System.out.println(returnObj); // Pointcut 메소드 반환값
 		return returnObj;
 		
-		
 	}//aroundLog()
 	
 	
