@@ -22,8 +22,8 @@ public class BoardDAO {
 	public void insertBoard(BoardVO vo) {
 		System.out.println("DAO insertBoard() 기능 처리");
 		
-		String board_insert = "insert into board1(seq, title, writer, content, regdate) "
-				+ "values((select nvl(max(seq),0) + 1 from board1), ? ,? ,?, sysdate)";
+		String board_insert = "insert into board1(seq, title, writer, content) "
+				+ "values((select nvl(max(seq),0) + 1 from board1), ? ,? ,?)";
 		
 		try {
 			conn = JDBCUtil.getConnection();
@@ -89,6 +89,7 @@ public class BoardDAO {
 	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 getBoard() 기능 처리");
 		String board_get = "select * from board1 where seq=?";
+		BoardVO board = null;
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(board_get);
@@ -96,12 +97,13 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				vo.setSeq(rs.getInt("seq"));
-				vo.setTitle(rs.getString("title"));
-				vo.setWriter(rs.getString("writer"));
-				vo.setContent(rs.getString("content"));
-				vo.setRegDate(rs.getDate("regdate"));
-				vo.setCnt(rs.getInt("cnt"));
+				board = new BoardVO();
+				board.setSeq(rs.getInt("seq"));
+				board.setTitle(rs.getString("title"));
+				board.setWriter(rs.getString("writer"));
+				board.setContent(rs.getString("content"));
+				board.setRegDate(rs.getDate("regdate"));
+				board.setCnt(rs.getInt("cnt"));
 			}
 //				System.out.println("---> " + vo.toString());
 		} catch (SQLException e) {
@@ -111,29 +113,28 @@ public class BoardDAO {
 		}finally {
 			JDBCUtil.close(pstmt, conn, rs);
 		}
-		return vo;
+		return board;
 	}//getBoard()
 
 	// 전체 글 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> JDBC로 getBoardList() 기능 처리");
-		String board_getList = "select * from board1 order by seq ASC";
-//		 order by seq ASC
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
+		String board_getList = "select * from board1 order by seq asc";
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(board_getList);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				vo.setSeq(rs.getInt("seq"));
-				vo.setTitle(rs.getString("title"));
-				vo.setWriter(rs.getString("writer"));
-				vo.setContent(rs.getString("content"));
-				vo.setRegDate(rs.getDate("regdate"));
-				vo.setCnt(rs.getInt("cnt"));
-				
-				boardList.add(vo);
+				BoardVO board = new BoardVO();
+				board.setSeq(rs.getInt("SEQ"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setWriter(rs.getString("WRITER"));
+				board.setContent(rs.getString("CONTENT"));
+				board.setRegDate(rs.getDate("REGDATE"));
+				board.setCnt(rs.getInt("CNT"));
+				boardList.add(board);
 //					System.out.println("---> " + vo.toString());
 			}
 		} catch (SQLException e) {
