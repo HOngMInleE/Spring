@@ -17,10 +17,10 @@
 	
 	if (user_get != null) {
 		System.out.println("로그인 성공");
-		response.sendRedirect("getBoardList.do");
+		response.sendRedirect("getBoardList.jsp");
 	} else {
 		System.out.println("로그인 실패");
-		response.sendRedirect("login.do");
+		response.sendRedirect("login.jsp");
 	}
 	
 	

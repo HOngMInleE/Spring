@@ -5,10 +5,10 @@
 <%@ page import="com.springbook.biz.board.impl.BoardDAO" %>
 
 <%
-	BoardVO boardVO = new BoardVO();
-	BoardDAO boardDAO = new BoardDAO();
-	List<BoardVO> boardList = boardDAO.getBoardList(boardVO);
-	
+	request.setCharacterEncoding("utf-8");
+
+// MVC형태
+	List<BoardVO> boardList = (List) session.getAttribute("boardList");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@
 	<center>
 		<h1>글목록</h1>
 		<h3>
-			테스트님 환영합니다... <a href="logout_proc.jsp">Log out</a>
+			테스트님 환영합니다... <a href="logout.do">Log out</a>
 		</h3>
 		
 		<!-- 검색 시작 -->
@@ -53,7 +53,7 @@
 			<tr>
 				<td><%=board.getSeq()%></td>
 				<td>
-					<a href="getBoard.jsp?seq=<%=board.getSeq()%>">
+					<a href="getBoard.do?seq=<%=board.getSeq()%>">
 						<%=board.getTitle() %>
 					</a>
 				</td>

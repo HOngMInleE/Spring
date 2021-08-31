@@ -31,7 +31,7 @@ public class UserDAO {
 			pstmt.setString(2, vo.getPassword());
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
+			if (rs.next()) {
 				user = new UserVO();
 				user.setId(rs.getString("id"));
 				user.setName(rs.getString("name"));
