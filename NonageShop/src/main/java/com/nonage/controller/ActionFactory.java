@@ -1,6 +1,7 @@
 package com.nonage.controller;
 
 import com.nonage.controller.action.Action;
+import com.nonage.controller.action.CartInsertAction;
 import com.nonage.controller.action.ContractAction;
 import com.nonage.controller.action.FindZipNumAction;
 import com.nonage.controller.action.IdCheckFormAction;
@@ -63,7 +64,11 @@ public class ActionFactory {
 	    	
 	    }else if(command.equals("logout")) {
 	    	action = new LogoutAction();
+	    	
+	    }else if(command.equals("cart_insert")) {
+	    	action = new CartInsertAction();
 	    }
+	    
 	    return action;
 	    
 	    
