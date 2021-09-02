@@ -1,7 +1,5 @@
 package com.springbook.biz;
 
-import java.util.Scanner;
-
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 

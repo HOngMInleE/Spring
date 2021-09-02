@@ -18,7 +18,7 @@
 			        <label>가 격 : </label>
 			        <p>  ${productVO.price2} </p> 
 			        <label>수 량 : </label>
-			        <input type="text" name="quantity" size="2" value="1"><br>
+			        <input type="number" name="quantity" style='width:40px' value="1" min="1" max="100"><br>
 			        <input type="hidden" name="pseq" value="${productVO.pseq}"><br>
 				</fieldset>
 				<div class="clear"></div>

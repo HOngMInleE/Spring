@@ -79,6 +79,23 @@ public class CartDAO {
 		return cartList;
 	}// cartList()
 	
+	public void deleteCart(int cseq) {
+		String sql = "delete cart where cseq = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("deleteCart 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}//deleteCart
+	
 	
 	
 }

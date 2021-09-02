@@ -4,7 +4,7 @@
 <%@ page import="com.springbook.biz.board.impl.BoardDAO" %>
 
 <%
-	BoardVO boardVO = (BoardVO)session.getAttribute("board");
+	// BoardVO boardVO = (BoardVO)session.getAttribute/("board");
 %>
 
 <!DOCTYPE html>
@@ -19,33 +19,33 @@
 		<a href="logout.do">Log out</a>
 		<hr>
 		<form action="updateBoard.do" method="post">
-			<input type="hidden" name="seq" value="<%=boardVO.getSeq() %>">
+			<input type="hidden" name="seq" value="${board.seq }">
 			<table border="1" cellpadding="0" cellspacing="0">
 				<tr>
 					<td bgcolor="orange">제목</td>
 					<td>
-						<input name="title" type="text" value="<%=boardVO.getTitle()%>">
+						<input name="title" type="text" value="${board.title }">
 					</td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">작성자</td>
-					<td><%=boardVO.getWriter()%></td>
+					<td>${board.writer }</td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">내용</td>
 					<td>
 						<textarea name="content" rows="10" cols="40">
-							<%=boardVO.getContent()%>
+							${board.content }
 						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">등록일</td>
-					<td><%=boardVO.getRegDate()%></td>
+					<td>${board.regDate }</td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">조회수</td>
-					<td><%=boardVO.getCnt() %></td>
+					<td>${board.cnt }</td>
 				</tr>		
 				<tr>
 					<td colspan="2" align="center">
@@ -56,7 +56,7 @@
 		</form>
 		<hr>
 		<a href="insertBoard.jsp">등록</a>&nbsp;&nbsp;&nbsp;
-		<a href="deleteBoard.do?seq=<%=boardVO.getSeq()%>">삭제</a>&nbsp;&nbsp;&nbsp;
+		<a href="deleteBoard.do?seq=${board.seq }">삭제</a>&nbsp;&nbsp;&nbsp;
 		<a href="getBoardList.do">목록</a>
 	</center>
 </body>

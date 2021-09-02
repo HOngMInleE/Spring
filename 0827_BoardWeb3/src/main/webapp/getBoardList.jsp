@@ -1,14 +1,12 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.springbook.biz.board.BoardVO" %>
-<%@ page import="com.springbook.biz.board.impl.BoardDAO" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-	request.setCharacterEncoding("utf-8");
+//	request.setCharacterEncoding("utf-8");
 
 // MVC형태
-	List<BoardVO> boardList = (List) session.getAttribute("boardList");
+	// List<BoardVO> boardList = (List) session.getAttribute("boardList");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,23 +45,20 @@
 				<th bgcolor="orange" width="100">등록일</th>
 				<th bgcolor="orange" width="100">조회수</th> 
 			</tr>
-			<%
-			for(BoardVO board : boardList) {
-			%>
-			<tr>
-				<td><%=board.getSeq()%></td>
-				<td>
-					<a href="getBoard.do?seq=<%=board.getSeq()%>">
-						<%=board.getTitle() %>
-					</a>
-				</td>
-				<td><%=board.getWriter()%></td>
-				<td><%=board.getRegDate() %></td>
-				<td><%=board.getCnt()%></td>
-			</tr>
-			<%
-			}
-			%>
+			
+			<c:forEach var="board" items="${boardList}">
+				<tr>
+					<td>${board.seq }</td>
+					<td>
+						<a href="getBoard.do?seq=${board.seq }">
+							${board.title }
+						</a>
+					</td>
+					<td>${board.writer }</td>
+					<td>${board.regDate }</td>
+					<td>${board.cnt }</td>
+				</tr>
+			</c:forEach>
 		</table>
 		<a href="insertBoard.jsp">새 글 등록</a>
 	</center>

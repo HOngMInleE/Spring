@@ -20,10 +20,10 @@ function go_cart_delete() {
 	}
 	
 	for (var i=0; i<document.formm.cseq.length; i++) {
-		alert("" + document.formm.cseq[i].checked);
+//		alert("" + document.formm.cseq[i].checked);
 		if (document.formm.cseq[i].checked == true) {
 			count++;
-			alert("" + count);
+//			alert("" + count);
 		}
 	}
 	
@@ -35,7 +35,7 @@ function go_cart_delete() {
 	}
 }// go_cart_delete()
 
-function go_order() {
+function go_order_insert() {
 	document.formm.action = "NonageServlet?command=mypage";
 	document.formm.submit();
 }
