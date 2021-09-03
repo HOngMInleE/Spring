@@ -26,7 +26,8 @@
 									<h3>${cartVO.pname }</h3>
 									</a>
 								</td>
-								<td>${cartVO.quantity }
+								<td>
+									<input type="number" value="${cartVO.quantity}">
 								</td>
 								<td>
 									<fmt:formatNumber value="${cartVO.price2*cartVO.quantity}" type="currency"/>

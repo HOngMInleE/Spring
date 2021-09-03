@@ -16,18 +16,14 @@ public class CartDeleteAction implements Action {
 		// TODO Auto-generated method stub
 		String url = "NonageServlet?command=cart_list";
 		
-		CartDAO cartDAO = CartDAO.getInstance();
-		String[] cseqDelete = request.getParameterValues("cseq");
+		String[] cseqArr = request.getParameterValues("cseq");
 		
-		for (String cseq : cseqDelete) {
+		for(String cseq : cseqArr) {
 			System.out.println(cseq);
+			CartDAO cartDAO = CartDAO.getInstance();
 			cartDAO.deleteCart(Integer.parseInt(cseq));
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
-		
+		request.getRequestDispatcher(url).forward(request, response);
 	}
-
-	
 }

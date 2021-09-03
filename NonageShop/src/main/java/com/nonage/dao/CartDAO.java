@@ -80,12 +80,13 @@ public class CartDAO {
 	}// cartList()
 	
 	public void deleteCart(int cseq) {
-		String sql = "delete cart where cseq = ?";
+	    String sql = "delete cart where cseq=?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cseq);
+			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
