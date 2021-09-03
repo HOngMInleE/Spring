@@ -19,7 +19,7 @@ public class LogoutController implements Controller {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("login");
+		mav.setViewName("redirect:login.jsp");
 		return mav;	
 	}
 

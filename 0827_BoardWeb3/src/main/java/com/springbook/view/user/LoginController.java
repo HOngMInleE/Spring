@@ -33,10 +33,10 @@ public class LoginController implements Controller {
 		
 		if (user!= null) {
 			System.out.println("로그인 성공");
-			mav.setViewName("getBoardList.do");
+			mav.setViewName("redirect:getBoardList.do");
 		}else {
 			System.out.println("로그인 실패");
-			mav.setViewName("login.jsp");
+			mav.setViewName("redirect:login.jsp");
 		}
 		return mav;
 		

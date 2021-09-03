@@ -26,7 +26,7 @@ public class DeleteBoardController implements Controller {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("getBoardList.do");
+		mav.setViewName("getBoardList");
 		return mav;
 	}
 
