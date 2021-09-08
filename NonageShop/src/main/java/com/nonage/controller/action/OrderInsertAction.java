@@ -3,7 +3,6 @@ package com.nonage.controller.action;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +21,9 @@ public class OrderInsertAction implements Action {
 		String url = "NonageServlet?command=order_list";
 		
 		HttpSession session = request.getSession();
-		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
-		if (loginUser == null) {
+		if(loginUser == null) {
 			url = "NonageServlet?command=login_form";
 		}else {
 			CartDAO cartDAO = CartDAO.getInstance();

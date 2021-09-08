@@ -13,7 +13,9 @@ import com.nonage.controller.action.JoinFormAction;
 import com.nonage.controller.action.LoginAction;
 import com.nonage.controller.action.LoginFormAction;
 import com.nonage.controller.action.LogoutAction;
+import com.nonage.controller.action.MyPageAction;
 import com.nonage.controller.action.OrderInsertAction;
+import com.nonage.controller.action.OrderListAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
 
@@ -80,7 +82,12 @@ public class ActionFactory {
 		}else if(command.equals("order_insert")) {
 			action = new OrderInsertAction();
 			
-		}
+		}else if(command.equals("order_list")) {
+			action = new OrderListAction();	
+			
+		}else if (command.equals("mypage")) {
+	        action = new MyPageAction();
+	    }
 	    
 	    return action;
 	    
