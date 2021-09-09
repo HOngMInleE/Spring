@@ -1,5 +1,7 @@
 package com.springbook.view.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
@@ -23,6 +26,23 @@ public class BoardController {
 	@RequestMapping(value="/insertBoard.do")
 	public String insertBoard(BoardVO vo) {
 		System.out.println("글 등록 처리");
+		
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) { // true : empty.
+			String fileName = uploadFile.getOriginalFilename();
+			try {						// 경로 정보
+				uploadFile.transferTo(new File("D:\\" + fileName));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("file 생성 실패");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("file 생성 실패");
+			}
+		}
+		
 		boardService.insertBoard(vo);
 		
 		return "redirect:getBoardList.do";
@@ -57,9 +77,20 @@ public class BoardController {
 	
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
+		
+		// TITLE = ""(빈문자) -> 전체 검색
+		if (vo.getSearchCondition() == null) {
+			vo.setSearchCondition("TITLE");
+		}
+		if (vo.getSearchKeyword() == null) {
+			vo.setSearchKeyword("");
+		}
+		
 		model.addAttribute("boardList", boardService.getBoardList(vo)); // Model 정보 저장
 		return "getBoardList.jsp";  //View 이름 리턴
 	}
+	
+	
 
 }
 

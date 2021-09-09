@@ -19,7 +19,11 @@ public class BoardDAOSpring {
 	private final String BOARD_UPDATE = "update board1 set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete board1 where seq=?";
 	private final String BOARD_GET = "select * from board1 where seq=?";
-	private final String BOARD_LIST = "select * from board1 order by seq desc";
+	//private final String BOARD_LIST = "select * from board1 order by seq desc";
+	private final String BOARD_LIST_T = "select * from board1 where title like '%'|| ? ||'%' order by seq desc";
+	private final String BOARD_LIST_C = "select * from board1 where content like '%'|| ? ||'%' order by seq desc";
+	
+	
 	
 	//CRUD
 	
@@ -31,8 +35,14 @@ public class BoardDAOSpring {
 	
 	public List<BoardVO> getBoardList(BoardVO vo){
 		System.out.println("===> Spring JDBC로 getBoardList() 기능 처리");
-		
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		Object[] args = { vo.getSearchKeyword() };
+		if (vo.getSearchCondition().equals("TITLE")) {			
+			return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
+		} else if (vo.getSearchCondition().equals("CONTENT")) {
+			return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
+		}
+		System.out.println("검색 실패");
+		return null;
 	}
 	
 	public void updateBoard(BoardVO vo) {

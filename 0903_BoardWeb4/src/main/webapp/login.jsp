@@ -11,7 +11,7 @@
 		<h1>로그인</h1>
 		<hr>
 		<form action="login.do" method="post">
-			<table>
+			<table style="border: 1px solid black;">
 				<tr>
 					<td bgcolor="orange">아이디</td>
 					<td><input type="text" name="id"></td>

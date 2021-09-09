@@ -14,6 +14,6 @@
 		<br>
 		<br> <a href="getBoardList.do">글 목록 바로가기</a>
 		<hr>
-	</center>
+	</center> 
 </body>
 </html>

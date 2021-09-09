@@ -10,11 +10,11 @@ import com.springbook.biz.user.UserVO;
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	private UserDAO userDAO;
+	private UserDAOSpring userDAO;
 	
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+//	public void setUserDAO(UserDAO userDAO) {
+//		this.userDAO = userDAO;
+//	}
 
 	@Override
 	public UserVO getUser(UserVO vo) {

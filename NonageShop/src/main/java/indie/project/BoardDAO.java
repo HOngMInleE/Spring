@@ -28,6 +28,7 @@ public class BoardDAO {
 	
 	// Read (Detail)
 	public BoardVO board_get(BoardVO vo) {
+		String sql = ""
 		return null;
 	}
 	
