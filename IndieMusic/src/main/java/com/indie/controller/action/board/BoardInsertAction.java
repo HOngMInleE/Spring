@@ -1,9 +1,7 @@
 package com.indie.controller.action.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,24 +10,24 @@ import com.indie.controller.action.Action;
 import com.indie.dao.BoardDAO;
 import com.indie.dto.BoardVO;
 
-public class BoardListAll_FormAction implements Action {
+public class BoardInsertAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("BoardList_All_form 실행");
-		BoardDAO boardDAO = BoardDAO.getInstance();
-		
+		System.out.println("Board_Insert 실행");
 		String url = "board/boardList.jsp";
 		
+		BoardDAO boardDAO = BoardDAO.getInstance();
 		BoardVO vo = new BoardVO();
 		
-		ArrayList<BoardVO> boardList = boardDAO.getBoardListByNewest(vo);
+		vo.setB_category(request.getParameter("b_category"));
+		vo.setB_title(request.getParameter("b_title"));
+		vo.setB_content(request.getParameter("b_content"));
 		
-		request.setAttribute("boardList", boardList);
+		boardDAO.insertBoard(vo);		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

@@ -7,9 +7,12 @@ import com.indie.controller.action.admin.AdminLoginAction;
 import com.indie.controller.action.admin.AdminLoginFormAction;
 import com.indie.controller.action.admin.InsertAdminFormAction;
 import com.indie.controller.action.admin.InsertMusicFormAction;
+import com.indie.controller.action.board.BoardDeleteAction;
 import com.indie.controller.action.board.BoardDetail_FormAction;
+import com.indie.controller.action.board.BoardInsertAction;
 import com.indie.controller.action.board.BoardListAll_FormAction;
 import com.indie.controller.action.board.BoardListCategory_FormAction;
+import com.indie.controller.action.board.BoardUpdateAction;
 import com.indie.controller.action.member.JoinAction;
 import com.indie.controller.action.member.LoginAction;
 import com.indie.controller.action.music.AllBalladMusicAction;
@@ -111,12 +114,18 @@ public class ActionFactory {
 			action = new JoinAction();
 		}
 		// board
-		else if(command.equals("boardListAll_form")) {
+		else if(command.equals("BoardList_All_form")) {
 			action = new BoardListAll_FormAction();
-		}else if(command.equals("boardListCategory_form")) {
+		}else if(command.equals("BoardList_Category_form")) {
 			action = new BoardListCategory_FormAction();
-		}else if(command.equals("boardDetail_form")) {
+		}else if(command.equals("Board_Detail_form")) {
 			action = new BoardDetail_FormAction();
+		}else if(command.equals("Board_Delete")) {
+			action = new BoardDeleteAction();
+		}else if(command.equals("Board_Insert")) {
+			action = new BoardInsertAction();
+		}else if(command.equals("Board_Update")) {
+			action = new BoardUpdateAction();
 		}
 		// playlist
 		else if(command.equals("Playlist_FormAction")) {

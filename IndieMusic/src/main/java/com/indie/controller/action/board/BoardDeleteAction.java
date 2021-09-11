@@ -1,7 +1,6 @@
 package com.indie.controller.action.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,26 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.indie.controller.action.Action;
 import com.indie.dao.BoardDAO;
-import com.indie.dto.BoardVO;
 
-public class BoardListAll_FormAction implements Action {
+public class BoardDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("BoardList_All_form 실행");
-		BoardDAO boardDAO = BoardDAO.getInstance();
-		
+		System.out.println("Board_Delete 실행");
 		String url = "board/boardList.jsp";
 		
-		BoardVO vo = new BoardVO();
+		BoardDAO boardDAO = BoardDAO.getInstance();
 		
-		ArrayList<BoardVO> boardList = boardDAO.getBoardListByNewest(vo);
+		int b_num = Integer.parseInt(request.getParameter("b_num"));  // url 통해 해당 게시글 번호 값 넘겨받음.
+		boardDAO.deleteBoard(b_num);
 		
-		request.setAttribute("boardList", boardList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

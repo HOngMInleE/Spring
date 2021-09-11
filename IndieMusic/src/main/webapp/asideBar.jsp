@@ -70,24 +70,24 @@
 	<div class="subNavWrap">
 		<div class="title">
 			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판">
-			<span class="navName">포스트</span>
+			<span class="navName">인디 포스트</span>
 		</div>
 		<br>
 		<ul>
 			<li class="list">
-				<a href="IndieServlet?command=boardListAll_form">- 모든  소식 </a>
+				<a href="IndieServlet?command=BoardList_All_form">- 전체 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=news"> - 뮤직 이슈 </a>
+				<a href="IndieServlet?command=BoardList_Category_form&b_category=news"> - 뮤직 이슈 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=magazine"> - 매거진 </a>
+				<a href="IndieServlet?command=BoardList_Category_form&b_category=magazine"> - 매거진 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=concert">- 공연 </a>
+				<a href="IndieServlet?command=BoardList_Category_form&b_category=concert">- 공연 </a>
 			</li>
 			<br>
 		</ul>

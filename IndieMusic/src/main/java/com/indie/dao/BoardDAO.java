@@ -29,7 +29,7 @@ public class BoardDAO {
 	// 게시글 저장
 	public void insertBoard(BoardVO vo) {
 		String sql = "insert into board (b_num, b_category, b_title, b_content)"
-				+ "values((SELECT NVL(MAX(board.adm_num), 0)+1 FROM BOARD),?,?,?)";
+				+ "values((SELECT NVL(MAX(board.b_num), 0)+1 FROM BOARD),?,?,?)";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
