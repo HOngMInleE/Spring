@@ -20,6 +20,44 @@ public class MusicDAO {
 		return instance;
 	}
 	
+	public List<MusicVO> getIndexPopular(){
+		List<MusicVO> musicList = new ArrayList<MusicVO>();
+		String sql = "select * from (select * from music order by m_playcnt desc) where rownum <= 10";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				
+				musicList.add(musicVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return musicList;
+		
+	}
+	
 	public List<MusicVO> getAllPopular(){
 		List<MusicVO> musicList = new ArrayList<MusicVO>();
 		String sql = "select * from music order by m_playcnt desc";
@@ -225,6 +263,162 @@ public class MusicDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "for");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				
+				musicList.add(musicVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return musicList;
+		
+	}
+	
+	public List<MusicVO> getAllDanceGenre(){
+		List<MusicVO> musicList = new ArrayList<MusicVO>();
+		String sql = "select * from music where m_genre = ? order by m_playcnt desc";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "dan");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				
+				musicList.add(musicVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return musicList;
+		
+	}
+	
+	public List<MusicVO> getAllBalladGenre(){
+		List<MusicVO> musicList = new ArrayList<MusicVO>();
+		String sql = "select * from music where m_genre = ? order by m_playcnt desc";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "bal");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				
+				musicList.add(musicVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return musicList;
+		
+	}
+	
+	public List<MusicVO> getAllHiphopGenre(){
+		List<MusicVO> musicList = new ArrayList<MusicVO>();
+		String sql = "select * from music where m_genre = ? order by m_playcnt desc";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "hip");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MusicVO musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				
+				musicList.add(musicVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return musicList;
+		
+	}
+	
+	public List<MusicVO> getAllIndieGenre(){
+		List<MusicVO> musicList = new ArrayList<MusicVO>();
+		String sql = "select * from music where m_genre = ? order by m_playcnt desc";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "in");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

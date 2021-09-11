@@ -1,7 +1,6 @@
 
 package com.indie.dto;
 
-import java.io.File;
 import java.sql.Timestamp;
 
 public class BoardVO {
@@ -16,41 +15,14 @@ public class BoardVO {
 	private Timestamp b_regDate; // 글 등록일
 	private Timestamp b_upDate; // 글 수정일
 	
-	private File b_picture1; // 게시글 사진1
-	private File b_picture2; // 게시글 사진2
-	private File b_picture3; // 게시글 사진3
-	private File b_picture4; // 게시글 사진4
-	private File b_picture5; // 게시글 사진5
+	private String b_picture; // 게시글 메인 사진 겸 리스트에 보일 사진
+
 	
-	public File getB_picture1() {
-		return b_picture1;
+	public String getB_picture() {
+		return b_picture;
 	}
-	public void setB_picture1(File b_picture1) {
-		this.b_picture1 = b_picture1;
-	}
-	public File getB_picture2() {
-		return b_picture2;
-	}
-	public void setB_picture2(File b_picture2) {
-		this.b_picture2 = b_picture2;
-	}
-	public File getB_picture3() {
-		return b_picture3;
-	}
-	public void setB_picture3(File b_picture3) {
-		this.b_picture3 = b_picture3;
-	}
-	public File getB_picture4() {
-		return b_picture4;
-	}
-	public void setB_picture4(File b_picture4) {
-		this.b_picture4 = b_picture4;
-	}
-	public File getB_picture5() {
-		return b_picture5;
-	}
-	public void setB_picture5(File b_picture5) {
-		this.b_picture5 = b_picture5;
+	public void setB_picture(String b_picture) {
+		this.b_picture = b_picture;
 	}
 	public int getB_num() {
 		return b_num;

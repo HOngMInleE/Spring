@@ -25,48 +25,12 @@ public class PlaylistDAO {
 	ResultSet rs = null;
 
 // CRUD
-	// Create (insert)
-	public void insertBoard(BoardVO vo) {
-		
-		try {
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-	}
 	
-	// Read (Detail)
-	public BoardVO getBoard(BoardVO vo) {
-		
-		try {
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+// Read (List)
+	// 담기 한 곡들 아이디 값을 매개값으로 받아오기
 	
-	// Read (List)
-	public ArrayList<BoardVO> getBoardList(BoardVO vo) {
-		return null;
-	}
-	
-	// Update (update)
-	public void updateBoard(BoardVO vo) {
-		
-	}
-	
-	// Delete (delete)
-	public void board_delete(BoardVO vo) {
-		
-	}
-	
-	
-	
-	
-	
+// Delete (delete)
+	// 담기 된 곡 삭제 (담기 값 변경?)
 	
 	
 }

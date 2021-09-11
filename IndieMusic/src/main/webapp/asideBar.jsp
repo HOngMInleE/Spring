@@ -50,26 +50,26 @@
 		<br>
 		<ul>
 			<li class="list">
-				<a href="IndieServlet?command=KorDance"> - 댄스/팝 </a>
+				<a href="IndieServlet?command=AllDance"> - 댄스/팝 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=KorBallad"> - 발라드 </a>
+				<a href="IndieServlet?command=AllBallad"> - 발라드 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=KorHiphop"> - 힙합 </a>
+				<a href="IndieServlet?command=AllHiphop"> - 힙합 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=KorIndie"> - 인디 </a>
+				<a href="IndieServlet?command=AllIndie"> - 인디 </a>
 			</li>
 			<br>
 		</ul>
 	</div>
 	<div class="subNavWrap">
 		<div class="title">
-			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판 아이콘">
+			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판">
 			<span class="navName">포스트</span>
 		</div>
 		<br>
@@ -79,28 +79,34 @@
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=News"> - 뮤직 이슈 </a>
+				<a href="IndieServlet?command=boardListCategory_form&b_category=news"> - 뮤직 이슈 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=Magazine"> - 매거진 </a>
+				<a href="IndieServlet?command=boardListCategory_form&b_category=magazine"> - 매거진 </a>
 			</li>
 			<br>
 			<li class="list">
-				<a href="IndieServlet?command=boardListCategory_form&b_category=Concert">- 공연 </a>
+				<a href="IndieServlet?command=boardListCategory_form&b_category=concert">- 공연 </a>
 			</li>
 			<br>
 		</ul>
 	</div>
+	
+	<%	// 로그인 값이 존재 하면 보여지고 없으면 안보여짐.
+		// MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+	
+		// if (loginUser != null) {
+	%>
 	<div class="subNavWrap">
 		<div class="title">
-			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판 아이콘">
+			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="마이뮤직">
 			<span class="navName">마이 뮤직</span>
 		</div>
 		<br>
 		<ul>
 			<li class="list">
-				<a href="IndieServlet?command=boardList_form">- 플레이리스트 </a>
+				<a href="IndieServlet?command=Playlist_FormAction">- 플레이리스트 </a>
 			</li>
 			<br>
 			<!-- 			
@@ -119,5 +125,11 @@
 			-->
 		</ul>
 	</div>
+	<%
+	// } else {
+	// 	<div class="hr"></div>
+	// </div>
+	// }
+	%>
 	<div class="hr"></div>
 </div>

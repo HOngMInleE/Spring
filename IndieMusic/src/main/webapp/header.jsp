@@ -20,7 +20,7 @@
 			</div>
 			<div class="mainHeader">
 				<div class="frame">
-					<a href="${pageContext.request.contextPath}/Index.jsp">
+					<a href="IndieServlet?command=index">
 						<img class="logo" alt="로고이미지" src="${pageContext.request.contextPath}/img/common/logo_01.png">
 					</a>
 					<div class="search">

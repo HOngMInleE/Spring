@@ -44,7 +44,7 @@
 						<li>
 							<div class="board_list">
 								<div class="list_date">
-									<span>${boardList.b_regDate}</span>
+									<span>글 등록일 ${boardList.b_regDate}</span>
 								</div>
 								<div class="image">
 									<%-- <td height="40">${boardList.b_picture}</td> --%>
@@ -52,19 +52,19 @@
 								
 								<dl>
 									<dt>
-										<a href="#">${boardList.b_title}</a>
+										<a href="IndieServlet?command=boardDetail_form&">글 제목 ${boardList.b_title}</a>
 									</dt>
 									<dd>
-										<a href="#">${boardList.b_content}</a> <!-- 일정 간격만 표기 css작성해야함 -->
+										<a href="#">글 내용 ${boardList.b_content}</a> <!-- 일정 간격만 표기 css작성해야함 -->
 									</dd>
 									<dd>
 										<p class="left">
 											<span class="category_move">
-												<a href="#">${boardList.b_category}</a>
+												<a href="#">글 종류 ${boardList.b_category}</a>
 											</span>
 											<span class="cnt_view">
 												<span>조회</span>
-												<span>${boardList.b_readCnt}</span>
+												<span>글 조회수${boardList.b_readCnt}</span>
 											</span>
 										</p>
 									</dd>
