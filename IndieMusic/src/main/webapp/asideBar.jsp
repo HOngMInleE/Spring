@@ -103,6 +103,7 @@
 				<a href="IndieServlet?command=boardList_form">- 플레이리스트 </a>
 			</li>
 			<br>
+			<!-- 			
 			<li class="list">
 				<a href="IndieServlet?command=boardList_form"> - 나의 문의 내역 </a>
 			</li>
@@ -114,7 +115,8 @@
 			<li class="list">
 				<a href="IndieServlet?command=boardList_form"> - Notice </a>
 			</li>
-			<br>
+			<br> 
+			-->
 		</ul>
 	</div>
 	<div class="hr"></div>
