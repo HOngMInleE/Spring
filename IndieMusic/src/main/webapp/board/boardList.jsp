@@ -7,14 +7,13 @@
 		// ex) if (category.equals("News") { : getBoardListByCategory(String category) { 
 			// category = ? pstmt.setString(request.getParameter(category)) //category가 news인 컬럼들을 찾아 출력하는 메소드 
 	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+	String title_category = (String)request.getAttribute("title_category");
 %>
 <div id="mid" class="frame">
 	<div id="grid1co">
 		<%@ include file="/asideBar.jsp"%></div>
 	<div id="grid2co">
-	
 		<style>
-		
 			a{
 			    color: #1a1a1a;
 			    text-decoration: none;
@@ -119,19 +118,22 @@
 			}
 			
 			
-			/* musicView에서 퍼온 것 */
+			/* musicView에서 퍼온 것  */
 			.board_wrap{
-			margin: 30px 0 0 30px;
+				margin: 30px 0 0 30px;
 			}
 			
-			.board_category{
-			width:720px;
-		    height: 140px;
+			.board_top{
+				width:720px;
+			    height: 140px;
 			}
 		
+			.board_category {
+				font-size: 35px; 
+				font-weight: bold;
+			}
 			.board_content{
-			width:720px;
-			
+				width:720px;
 			}
 		</style>
 
@@ -140,13 +142,41 @@
  
  <!-- category 별로 board_header 다르게 표시(이미지와 카테고리 명) -->
 		<article class="board_wrap">
-			<dl class="board_category">
+			<dl class="board_top">
 				<dt style="font-size: 50px; padding-bottom: 30px;">인디 포스트</dt>
-				<dt style="font-size: 30px; font-weight: bold;"> 전체 </dt>
+				<%-- <c:set var="title_category" value='<%request.getParameter("b_category");%>'></c:set> --%>
+			 	<%-- <c:choose>
+					<c:when test="${requestScope.b_category == 'news'}">
+						<dt class="board_category"> 뮤직 이슈 </dt>
+					</c:when>
+					<c:when test="${requestScope.b_category == 'magazine'}">
+						<dt class="board_category"> 매거진 </dt>
+					</c:when>
+					<c:when test="${requestScope.b_category == 'concert'}">
+						<dt class="board_category"> 공연 </dt>
+					</c:when>
+					<c:otherwise>
+						<dt class="board_category"> 전체 </dt>
+					</c:otherwise>
+				</c:choose> --%> 
+				<% if (request.getParameter("b_category") != null) {
+						 if (request.getParameter("b_category").equals("news")) { %>
+							<dt class="board_category"> 뮤직 이슈 </dt>
+					<% } else if (request.getParameter("b_category").equals("magazine")) { %>
+							<dt class="board_category"> 매거진 </dt>
+					<% } else if (request.getParameter("b_category").equals("concert")) { %>
+							<dt class="board_category"> 공연 </dt>
+					<% } else if (title_category.equals("all")){
+					%>
+						<dt class="board_category"> 전체 </dt>
+					<%
+						}
+					}
+					%>					
 				<hr color="blue" style="margin-left: 0px; margin-top: 15px; height:2px;">
 			</dl>
 			<table class="board_content">
-				<c:forEach items="${boardList}" var="boardList" varStatus="status">
+				<c:forEach items="${boardList}" var="boardList">
 					<tr class="board_list">
 						<td class="list_date">글 등록일 ${boardList.b_regDate}</td>
 						<td class="image">

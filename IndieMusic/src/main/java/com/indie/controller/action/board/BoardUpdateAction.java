@@ -21,10 +21,10 @@ public class BoardUpdateAction implements Action {
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		BoardVO vo = new BoardVO();
 		
+		vo.setB_num(Integer.parseInt(request.getParameter("b_num"))); // url 통해 해당 게시글 번호 값 넘겨받음.
 		vo.setB_category(request.getParameter("b_category"));
 		vo.setB_title(request.getParameter("b_title"));
 		vo.setB_content(request.getParameter("b_content"));
-		vo.setB_num(Integer.parseInt(request.getParameter("b_num"))); // url 통해 해당 게시글 번호 값 넘겨받음.
 		
 		boardDAO.updateBoard(vo);		
 		

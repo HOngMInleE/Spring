@@ -75,7 +75,7 @@
 		<br>
 		<ul>
 			<li class="list">
-				<a href="IndieServlet?command=BoardList_All_form">- 전체 </a>
+				<a href="IndieServlet?command=BoardList_All_form&b_category=all">- 전체 </a>
 			</li>
 			<br>
 			<li class="list">

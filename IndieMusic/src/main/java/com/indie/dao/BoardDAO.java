@@ -60,12 +60,14 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
+				vo.setB_num(rs.getInt("b_num"));
+				vo.setB_picture(rs.getString("b_picture"));
 				vo.setB_category(rs.getString("b_category"));
 				vo.setB_title(rs.getString("b_title"));
 				vo.setB_content(rs.getString("b_content"));
-				vo.setB_readCnt(Integer.parseInt(rs.getString("b_readCnt")));
-				vo.setB_regDate(rs.getTimestamp("b_regDate"));
-				vo.setB_upDate(rs.getTimestamp("b_upDate"));
+				vo.setB_readCnt(rs.getInt("b_readCnt"));
+	    	  	vo.setB_regDate(rs.getTimestamp("b_regDate"));
+	    	  	vo.setB_upDate(rs.getTimestamp("b_upDate"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
