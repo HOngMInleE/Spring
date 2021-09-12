@@ -14,7 +14,6 @@
 	<div id="grid2co">
 	
 		<style>
-		
 			a{
 			    color: #1a1a1a;
 			    text-decoration: none;
@@ -73,27 +72,40 @@
 			}
 			
 			.board_picture {
-				width: 70%;
+				width: 600px;
 				margin: 0 auto 30px;
 			}
 			
+			.board_picture img {
+				width: 600px;
+			}
+			
 			.thumb_frame {
-				display: block;
-			    width: 100%;
+			    /* width: 100%;
 			    max-height: max-content;
-			    min-height: 400px;
+			    min-height: 400px; */
+
+			    display: block;
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    width: 100%;
+			    height: 133px;
 			    border: 1px solid #000;
 			    opacity: 0.2;
 			}
 			
 			.board_content_wrap {
 				width:100%;
-			    color: #666;
+			    color: black;
+			    font-size: 23px;
 			}
 			
 			.board_content {
 				word-wrap: break-word;
 			    word-break: break-all;
+			    
+			    line-height: 35px;
 			}
 			
 			.board_content_note {
@@ -152,13 +164,14 @@
 			</dl>
 			<dl class="board_content_wrap">
 				<dd class="board_picture">
-					<img alt="이미지 채워넣어야함" src="">
-						${boardDetail.b_picture}
-					<span class="thumb_frame"></span>
+					<div>
+						<img alt="${boardDetail.b_picture}" src="${pageContext.request.contextPath}/img/board/${boardDetail.b_picture}.jpg">
+						<span class="thumb_frame"></span>
+					</div>
 				</dd>
 				<dd class="board_content">
 					<div class="board_content_note">
-						글 내용 ${boardList.b_content}
+						${boardDetail.b_content}
 					</div>
 				</dd>
 				<div class="board_tool">

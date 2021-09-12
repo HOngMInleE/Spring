@@ -62,7 +62,7 @@
 			    position: absolute;
 			    left: 0;
 			    top: 0;
-			    width: 240px;
+			    width: 238px;
 			    height: 133px;
 			    border: 1px solid #000;
 			    opacity: 0.2;
@@ -92,10 +92,10 @@
 			.board_list .list_content {
 			    color: #666;
 			    line-height: 20px;
-			    min-height: 50px;
 			    margin: 0 15px 15px 0;
-			    word-wrap: break-word;
-			    word-break: break-all;
+			    /* word-wrap: break-word;
+			    word-break: break-all; */
+			   	text-overflow: 
 			}
 			
 			.board_list .list_detail {
@@ -178,26 +178,25 @@
 			<table class="board_content">
 				<c:forEach items="${boardList}" var="boardList">
 					<tr class="board_list">
-						<td class="list_date">글 등록일 ${boardList.b_regDate}</td>
+						<td class="list_date"> ${boardList.b_regDate}</td>
 						<td class="image">
 							<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">
-								<img alt="이미지 채워넣어야함" src="" width="240" height="135">
-								 ${boardList.b_picture}
+								<img alt="${boardList.b_picture}" width="240" height="135" src="img/board/${boardList.b_picture}.jpg">
 								<span class="thumb_frame"></span>
 							</a>
 						</td>
 						<td>
 							<dl style="height:135px;">
 								<dt class="list_title">
-									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">글 제목 ${boardList.b_title}</a>
+									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">${boardList.b_title}</a>
 								</dt>
 								<dd class="list_content">
-									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">글 내용 ${boardList.b_content}</a> <!-- 일정 간격만 표기 css작성해야함 -->
+									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">${boardList.b_content}</a> 
 								</dd>
 								<dd class="list_detail">
 									<p class="left">
 										<span class="list_category">
-											<a href="IndieServlet?command=BoardList_Category_form&b_category=${boardList.b_category}">[글 종류 ${boardList.b_category}]</a>
+											<a href="IndieServlet?command=BoardList_Category_form&b_category=${boardList.b_category}">[ ${boardList.b_category}]</a>
 										</span>
 										<span class="list_cnt">
 											<span>조회 횟수 :</span>
