@@ -2,6 +2,7 @@ package com.indie.controller.action.board;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class BoardListAll_FormAction implements Action {
 		
 		BoardVO vo = new BoardVO();
 		
-		ArrayList<BoardVO> boardList = boardDAO.getBoardListByNewest(vo);
+		List<BoardVO> boardList = boardDAO.getBoardListByNewest(vo);
 		
 		request.setAttribute("boardList", boardList);
 		

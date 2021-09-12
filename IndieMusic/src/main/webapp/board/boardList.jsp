@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.indie.dto.BoardVO" %>
+<%@ page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/header.jsp"%>
-<%! // 넘어온 category별로 vo객체에 다르게 대입. 
+<% // 넘어온 category별로 vo객체에 다르게 대입. 
 		// ex) if (category.equals("News") { : getBoardListByCategory(String category) { 
-			// category = ? pstmt.setString(request.getParameter(category)) //category가 news인 컬럼들을 찾아 출력하는 메소드 %>
-			
+			// category = ? pstmt.setString(request.getParameter(category)) //category가 news인 컬럼들을 찾아 출력하는 메소드 
+	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+%>
 <div id="mid" class="frame">
 	<div id="grid1co">
 		<%@ include file="/asideBar.jsp"%></div>
@@ -143,7 +146,7 @@
 				<hr color="blue" style="margin-left: 0px; margin-top: 15px; height:2px;">
 			</dl>
 			<table class="board_content">
-				<c:forEach items="${boardList}" var="boardList">
+				<c:forEach items="${boardList}" var="boardList" varStatus="status">
 					<tr class="board_list">
 						<td class="list_date">글 등록일 ${boardList.b_regDate}</td>
 						<td class="image">

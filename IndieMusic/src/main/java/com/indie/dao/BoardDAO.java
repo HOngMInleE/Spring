@@ -90,13 +90,16 @@ public class BoardDAO {
 	      rs = pstmt.executeQuery();
 	      
 	      while (rs.next()) {
-	    	  	vo.setB_category(rs.getString("b_category"));
-				vo.setB_title(rs.getString("b_title"));
-				vo.setB_content(rs.getString("b_content"));
-				vo.setB_readCnt(Integer.parseInt(rs.getString("b_readCnt")));
-				vo.setB_regDate(rs.getTimestamp("b_regDate"));
-				vo.setB_upDate(rs.getTimestamp("b_upDate"));
-				boardList.add(vo);
+	    	  	BoardVO boardVO = new BoardVO();	
+	    	  	boardVO.setB_num(rs.getInt("b_num"));
+	    	  	boardVO.setB_picture(rs.getString("b_picture"));
+	    	  	boardVO.setB_category(rs.getString("b_category"));
+	    	  	boardVO.setB_title(rs.getString("b_title"));
+	    	  	boardVO.setB_content(rs.getString("b_content"));
+	    	  	boardVO.setB_readCnt(rs.getInt("b_readCnt"));
+				boardVO.setB_regDate(rs.getTimestamp("b_regDate"));
+				boardVO.setB_upDate(rs.getTimestamp("b_upDate"));
+				boardList.add(boardVO);
 	      }
 		} catch (Exception e) {
 		      e.printStackTrace();
@@ -111,20 +114,22 @@ public class BoardDAO {
 	// 게시글 카테고리별 출력 
 	public ArrayList<BoardVO> getBoardListByCategory(String category) { //(매개값 : 카테고리)
 		ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
-		BoardVO vo = new BoardVO();
 		
-		String sql= "select * from board where b_category =" + category 
-				+ " order by b_regDate asc";
+		String sql= "select * from board where b_category=? order by b_regDate asc";
 		try {
 		  conn = DBManager.getConnection();
 	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setString(1, category);
 	      rs = pstmt.executeQuery();
 	      
 	      while (rs.next()) {
+		    	BoardVO vo = new BoardVO();
+		    	vo.setB_num(rs.getInt("b_num"));
+	    	  	vo.setB_picture(rs.getString("b_picture"));
 	    	  	vo.setB_category(rs.getString("b_category"));
 				vo.setB_title(rs.getString("b_title"));
 				vo.setB_content(rs.getString("b_content"));
-				vo.setB_readCnt(Integer.parseInt(rs.getString("b_readCnt")));
+				vo.setB_readCnt(rs.getInt("b_readCnt"));
 				vo.setB_regDate(rs.getTimestamp("b_regDate"));
 				vo.setB_upDate(rs.getTimestamp("b_upDate"));
 				boardList.add(vo);

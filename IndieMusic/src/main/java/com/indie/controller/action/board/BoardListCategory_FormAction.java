@@ -1,13 +1,12 @@
 package com.indie.controller.action.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.indie.controller.action.Action;
 import com.indie.dao.BoardDAO;
@@ -25,9 +24,9 @@ public class BoardListCategory_FormAction implements Action {
 		String url = "board/boardList.jsp";
 		
 		
-		String category = request.getParameter("category");
+		String category = request.getParameter("b_category");
 		
-		ArrayList<BoardVO> boardList = boardDAO.getBoardListByCategory(category);
+		List<BoardVO> boardList = boardDAO.getBoardListByCategory(category);
 		
 		request.setAttribute("boardList", boardList);
 		
