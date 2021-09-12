@@ -24,109 +24,103 @@
 			    display: block;
 			}
 			
-			.board_list{
-		    	padding: 16px 0;
-   				border-bottom: 1px solid #e6e6e6;
-   				height: 135px;
-   				
-				position: relative;
-			    width: 100%;
-			    display: inline-block;
-			    vertical-align: top;
-			}
-			
-			.board_list .list_date {
-			    float: left;
-			    width: 96px;
-			    text-align: center;
-			    padding: 48px 0 0;
-			}
-			
-			.board_list .image {
-			    position: relative;
-			    float: left;
-			    width: 240px;
-			    margin-right: 24px;
-			}
-
-			.board_list .image img {
-			    vertical-align: top;
-			}
-
-			.board_list .thumb_frame {
-			    display: block;
-			    position: absolute;
-			    left: 0;
-			    top: 0;
-			    width: 240px;
-			    height: 133px;
-			    border: 1px solid #000;
-			    opacity: 0.2;
-			    filter: alpha(opacity=20);
-			}
-
-			.board_list dl {
-			    width: 360px;
-			    float: left;
-			    color: #666;
-			}
-			
-			.board_list .list_title {
-			    overflow: hidden;
-			    color: #1a1a1a;
-			    font-size: 18px;
-			    font-weight: bold;
-			    width: 100%;
-			    min-height: 20px;
-			    padding: 5px 5px 10px 0;
-			    margin-left: -2px;
-			    white-space: nowrap;
-			    text-overflow: ellipsis;
-			}
-
-
-			.board_list .list_content {
-			    color: #666;
-			    line-height: 20px;
-			    min-height: 50px;
-			    margin: 0 15px 15px 0;
-			    word-wrap: break-word;
-			    word-break: break-all;
-			}
-			
-			.board_list .list_detail {
-			    text-align: right;
-			    width: 100%;
-			    margin-top: 5px;
-			    display: inline-block;
-			}
-			
-			.board_list .list_detail .left {
-			    float: left;
-			    padding: 0;
-			    text-align: left;
-			}
-			
-			.board_list .list_detail .left .list_category, .list_cnt {
-			    vertical-align: middle;
-			    color: #666;
-			    margin-right: 50px;
-			}
-			
-			
-			/* musicView에서 퍼온 것 */
-			.board_wrap{
-			margin: 30px 0 0 30px;
+			.board_top {
+			    width: 720px;
+   				height: 20%;
 			}
 			
 			.board_category{
-			width:720px;
-		    height: 80px;
+				width: 720px;
+		   		padding-bottom: 10px;
+		   		font-size: 40px; 
 			}
-		
-			.board_content{
-			width:720px;
 			
+					
+			.board_title {
+			    font-size: 25px;
+    			font-weight: bold;
+    			padding: 15px 0 15px 30px;
+    			background-color: #f6f6f6;
+    			margin-bottom: 10px;
+			}
+			
+			.board_detail {
+  			 	padding-left: 25px;
+   				text-align: right;
+			    width: 100%;
+			    margin-top: 5px;
+			    display: inline-block;
+			    font-size: 0.8em;
+			    opacity: 0.8;
+			}
+			
+			.board_date {
+				float:left;
+			    color: #666;
+			    padding-right: 10px;
+			}
+			
+			.board_reg_date,
+			.board_up_date {
+				padding: 0 10px;
+			}
+			
+			.board_cnt {
+				float: right;
+			    color: #666;
+			    margin-right: 50px;
+			    padding-right: 30px;
+			}
+			
+			.board_picture {
+				width: 70%;
+				margin: 0 auto 30px;
+			}
+			
+			.thumb_frame {
+				display: block;
+			    width: 100%;
+			    max-height: max-content;
+			    min-height: 400px;
+			    border: 1px solid #000;
+			    opacity: 0.2;
+			}
+			
+			.board_content_wrap {
+				width:100%;
+			    color: #666;
+			}
+			
+			.board_content {
+				word-wrap: break-word;
+			    word-break: break-all;
+			}
+			
+			.board_content_note {
+			    min-height: 650px;
+			    width: 90%;
+				margin: 0 auto 30px;
+			
+			}
+			
+			.board_tool {
+				width:70%;
+				margin: 0 auto;
+			}
+			
+			.board_button {
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			/* musicView에서 퍼온 것 */
+			
+			.board_wrap{
+				margin: 30px 0 0 30px;
+			}
+			
+			.board_content{
+				width:720px;
 			}
 		</style>
 
@@ -136,38 +130,42 @@
  <!-- category 별로 board_header 다르게 표시(이미지와 카테고리 명) -->
 		<article class="board_wrap">
 			<dl class="board_top">
-				<dt class="board_category" style="font-size: 50px; font-weight: bold;">
+				<dt class="board_category">
 					${boardDetail.b_category }
 				</dt>
-				<dd class="board_title">
+				<dt class="board_title">
 					글 제목 ${boardList.b_title}
-				</dd>
+				</dt>
 				<dd class="board_detail">
-					<p class="left">
+					<p>
 						<span class="board_date">
 							<span class="board_reg_date">글 등록일 ${boardDetail.b_regDate}</span>
-							<span class="board_up_date">글 등록일 ${boardDetail.b_upDate}</span>
+							<span class="board_up_date">글 수정일 ${boardDetail.b_upDate}</span>
 						</span>
 						<span class="board_cnt">
 							<span>조회 횟수 :</span>
-							<span>${boardList.b_readCnt}</span>
+							<span>${boardDetail.b_readCnt}</span>
 						</span>
 					</p>
 				</dd>
-				<hr color="blue" style="margin-left: 0px; margin-top: 15px; height:2px;">
+				<hr style="margin-bottom: 30px;">
 			</dl>
-			<dl class="board_content">
-					<dd class="board_picture">
-						<img alt="이미지 채워넣어야함" src="" width="240" height="135">
-							${boardDetail.b_picture}
-						<span class="thumb_frame"></span>
-					</dd>
-					<dd class="board_content">
+			<dl class="board_content_wrap">
+				<dd class="board_picture">
+					<img alt="이미지 채워넣어야함" src="">
+						${boardDetail.b_picture}
+					<span class="thumb_frame"></span>
+				</dd>
+				<dd class="board_content">
+					<div class="board_content_note">
 						글 내용 ${boardList.b_content}
-					</dd>
-					<div class="board_tool">
-						<input type="button" value="목록" onclick="#">
 					</div>
+				</dd>
+				<div class="board_tool">
+					<div class="board_button">
+						<input style="font-size: 20px;"type="button" value="목록" onclick="location.href='javascript:history.back()'">
+					</div>
+				</div>
 			</dl>
 		</article>	
 	</div> <!-- grid2 div -->

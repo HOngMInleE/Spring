@@ -26,10 +26,10 @@ public class BoardListAll_FormAction implements Action {
 		BoardVO vo = new BoardVO();
 		
 		List<BoardVO> boardList = boardDAO.getBoardListByNewest(vo);
-		String category = request.getParameter("b_category");
+		String title_category = request.getParameter("b_category");
 		
 		request.setAttribute("boardList", boardList);
-		request.setAttribute("title_category", category);
+		request.setAttribute("title_category", title_category);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

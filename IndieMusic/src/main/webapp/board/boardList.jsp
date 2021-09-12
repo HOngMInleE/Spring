@@ -129,7 +129,7 @@
 			}
 		
 			.board_category {
-				font-size: 35px; 
+				font-size: 30px; 
 				font-weight: bold;
 			}
 			.board_content{
@@ -143,7 +143,7 @@
  <!-- category 별로 board_header 다르게 표시(이미지와 카테고리 명) -->
 		<article class="board_wrap">
 			<dl class="board_top">
-				<dt style="font-size: 50px; padding-bottom: 30px;">인디 포스트</dt>
+				<dt style="font-size: 40px; padding-bottom: 30px;">인디 포스트</dt>
 				<%-- <c:set var="title_category" value='<%request.getParameter("b_category");%>'></c:set> --%>
 			 	<%-- <c:choose>
 					<c:when test="${requestScope.b_category == 'news'}">
