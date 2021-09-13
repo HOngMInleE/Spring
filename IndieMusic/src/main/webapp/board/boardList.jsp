@@ -206,7 +206,7 @@
 											<a href="IndieServlet?command=BoardList_Category_form&b_category=${boardList.b_category}">[ ${boardList.b_category}]</a>
 										</span>
 										<span class="list_cnt">
-											<span>조회 횟수 :</span>
+											<span>조회 :</span>
 											<span>${boardList.b_readCnt}</span>
 										</span>
 									</p>
