@@ -165,13 +165,17 @@
 			<dl class="board_content_wrap">
 				<dd class="board_picture">
 					<div>
-						<img alt="${boardDetail.b_picture}" src="${pageContext.request.contextPath}/img/board/${boardDetail.b_picture}.jpg">
+						<img alt="${boardDetail.b_picture}" src="${pageContext.request.contextPath}/img/board/${boardDetail.b_picture}">
 						<span class="thumb_frame"></span>
 					</div>
 				</dd>
 				<dd class="board_content">
 					<div class="board_content_note">
-						${boardDetail.b_content}
+						<jsp:include page="/board/content/${boardDetail.b_content}">
+							<jsp:param value="${boardDetail.b_content}" name="content"/>						
+						</jsp:include>
+						<span>${boardDetail.b_content}</span>
+						<span>content</span>
 					</div>
 				</dd>
 				<div class="board_tool">

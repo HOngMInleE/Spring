@@ -95,7 +95,10 @@
 			    margin: 0 15px 15px 0;
 			    /* word-wrap: break-word;
 			    word-break: break-all; */
-			   	text-overflow: 
+			    margin-right: 5px;
+			    height: 60px;
+				overflow:hidden; 
+		        text-overflow: ellipsis;
 			}
 			
 			.board_list .list_detail {
@@ -181,7 +184,7 @@
 						<td class="list_date"> ${boardList.b_regDate}</td>
 						<td class="image">
 							<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">
-								<img alt="${boardList.b_picture}" width="240" height="135" src="img/board/${boardList.b_picture}.jpg">
+								<img alt="${boardList.b_picture}" width="240" height="135" src="img/board/${boardList.b_picture}">
 								<span class="thumb_frame"></span>
 							</a>
 						</td>
@@ -191,7 +194,11 @@
 									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">${boardList.b_title}</a>
 								</dt>
 								<dd class="list_content">
-									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">${boardList.b_content}</a> 
+									<a href="IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}">
+										<jsp:include page="/board/content/${boardList.b_content}" flush="false">
+											<jsp:param value="${boardList.b_content}" name="content"/>
+										</jsp:include>									
+									</a> 
 								</dd>
 								<dd class="list_detail">
 									<p class="left">
