@@ -26,8 +26,9 @@ public class PlaylistDAO {
 	
 //Read 
 	// id값이 같은 플레이리스트불러오기
-	public void getPlaylistById(String mb_id) {
+	public List<PlaylistVO> getPlaylistById(String mb_id) {
 		// mb_id값 받아와 해당 id값을 가진 모든 컬럼 (title은 distinct:고유값출력) 받아옴
+		return null;
 	}
 	
 //Create  

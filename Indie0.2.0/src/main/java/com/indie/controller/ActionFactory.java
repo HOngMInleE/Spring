@@ -148,7 +148,7 @@ public class ActionFactory {
 			action = new BoardUpdateAction();
 		}
 		// playlist
-		else if(command.equals("Playlist_FormAction")) {
+		else if(command.equals("Playlist_My_FormAction")) {
 			action = new Playlist_My_FormAction();
 		}else if(command.equals("Playlist_PlayAction")) {
 			action = new Play_PlaylistAction();
