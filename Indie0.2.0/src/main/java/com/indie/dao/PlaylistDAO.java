@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.indie.dto.PlaylistVO;
 
+import util.DBManager;
+
 public class PlaylistDAO {
 
 	// SingleTornPattern
@@ -39,10 +41,25 @@ public class PlaylistDAO {
 	
 //Creat 
 	// 플레이리스트에 해당 곡 담기 
-	public void addPlaylist(String m_id) {
+	public void addPlaylist(int m_id, String mb_id) {
 		// 노래 담기버튼-> 플레이리스트 선택시 실행 메소드
 		// pl_id,pl_id, pl_num, pl_num이 일치시 추가
 		// 해당 곡 정보-> playlist table 에 저장
+		String sql = "insert into playlist (PL_NUM, M_ID, MB_ID) values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),?,?)";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m_id);
+			pstmt.setString(2, mb_id);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("insertBoard() 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 	
 //Read  

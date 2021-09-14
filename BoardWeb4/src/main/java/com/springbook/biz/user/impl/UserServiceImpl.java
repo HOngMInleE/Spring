@@ -11,10 +11,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDAOSpring userDAO;
-	
-//	public void setUserDAO(UserDAO userDAO) {
-//		this.userDAO = userDAO;
-//	}
 
 	@Override
 	public UserVO getUser(UserVO vo) {

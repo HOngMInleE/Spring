@@ -24,28 +24,17 @@ public class BoardController {
 	private BoardService boardService;   //BoardServiceImpl
 	
 	@RequestMapping(value="/insertBoard.do")
-	public String insertBoard(BoardVO vo) {
+	public String insertBoard(BoardVO vo) throws IllegalStateException, IOException {
 		System.out.println("글 등록 처리");
 		
 		MultipartFile uploadFile = vo.getUploadFile();
-		if(!uploadFile.isEmpty()) { // true : empty.
+		if(!uploadFile.isEmpty()){
 			String fileName = uploadFile.getOriginalFilename();
-			try {						// 경로 정보
-				uploadFile.transferTo(new File("D:\\" + fileName));
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("file 생성 실패");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("file 생성 실패");
-			}
+			uploadFile.transferTo(new File("D:/" + fileName));
 		}
 		
 		boardService.insertBoard(vo);
-		
-		return "redirect:getBoardList.do";
+		return "getBoardList.do";
 	}
 
 	@RequestMapping("/updateBoard.do")
@@ -78,19 +67,14 @@ public class BoardController {
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
 		
-		// TITLE = ""(빈문자) -> 전체 검색
-		if (vo.getSearchCondition() == null) {
+		if(vo.getSearchCondition() == null) 
 			vo.setSearchCondition("TITLE");
-		}
-		if (vo.getSearchKeyword() == null) {
+		if(vo.getSearchKeyword() == null)
 			vo.setSearchKeyword("");
-		}
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo)); // Model 정보 저장
 		return "getBoardList.jsp";  //View 이름 리턴
 	}
-	
-	
 
 }
 

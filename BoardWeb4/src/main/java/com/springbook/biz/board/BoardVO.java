@@ -11,12 +11,8 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
-	
-	// 검색 기능 
 	private String searchCondition;
 	private String searchKeyword;
-	
-	// 파일 업로드
 	private MultipartFile uploadFile;
 	
 	public MultipartFile getUploadFile() {
@@ -34,9 +30,10 @@ public class BoardVO {
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
+	public void setSearchKeyword(String serarchKeyword) {
+		this.searchKeyword = serarchKeyword;
 	}
+	
 	public int getSeq() {
 		return seq;
 	}

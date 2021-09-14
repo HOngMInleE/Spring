@@ -41,7 +41,6 @@ public class BoardDAOSpring {
 		} else if (vo.getSearchCondition().equals("CONTENT")) {
 			return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
 		}
-		System.out.println("검색 실패");
 		return null;
 	}
 	
