@@ -18,6 +18,7 @@ import com.nonage.controller.action.OrderInsertAction;
 import com.nonage.controller.action.OrderListAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
+import com.nonage.controller.action.QnaListAction;
 
 public class ActionFactory {
 
@@ -87,6 +88,8 @@ public class ActionFactory {
 			
 		}else if (command.equals("mypage")) {
 	        action = new MyPageAction();
+	    }else if(command.equals("qna_list")) {
+	    	action = new QnaListAction();
 	    }
 	    
 	    return action;

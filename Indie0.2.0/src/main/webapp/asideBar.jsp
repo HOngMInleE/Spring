@@ -70,7 +70,7 @@
 	</div>
 	<div class="subNavWrap">
 		<div class="title">
-			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판">
+			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="게시판 메뉴">
 			<span class="navName">인디 포스트</span>
 		</div>
 		<br>
@@ -101,7 +101,7 @@
 	%>
  	<div class="subNavWrap">
  		<div class="title"> 
- 			<img src="${pageContext.request.contextPath}/img/common/icon_post.png" alt="마이뮤직"> 
+ 			<img src="${pageContext.request.contextPath}/img/common/icon_genre.png" alt="마이뮤직 메뉴"> 
  			<span class="navName">마이 뮤직</span>
  		</div>
  		<br>
