@@ -89,42 +89,70 @@ div {
 			}
 			
 		</style>
-	<script type="text/javascript">
-	function my_playlist() {
+	<!-- <script type="text/javascript">
+	function add_playlist() {
 		var url = "IndieServlet?command=Playlist_Insert_FormAction";
 		window.open(url, "_blank_1",
 				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
 		}
-	</script>
+	</script> -->
 <article class="playlist_wrap">
 	<dl class="top_menu">
-		<dt class="sub_title">마이 뮤직</dt>
+		<dt class="sub_title"> 플레이리스트 정보 </dt>
 		<dt class="playlist_make">
-			<button onclick="my_playlist()">플레이리스트 만들기</button>
+			<!-- <button onclick="my_playlist()">담기</button> -->
+		</dt>
+		<dt class="playlist_title">
+			${my_playlist.pl_title}
 		</dt>
 	</dl>
 	<hr color="grey" style="margin:10px 0 10px 0; height: 1px;">
 	<table class="playlist_content">
 		<tr class="list_title">
-			<th>NO</th><th>플레이리스트 정보</th><th>전체 듣기</th>
+			<th>곡명</th><th>아티스트</th><th>앨범</th><th>듣기</th><th>삭제</th>
 		</tr>
-		<c:forEach items="${my_playlist}" var="my_playlist" varStatus="status">
+		<c:forEach items="${playlist_songs}" var="playlist_songs" varStatus="status">
 			<tr class="list_content">
-				<td width="5%">
-					<span class="content_count">
+				<td width="5%" style="text-align:center">
+					<span style="font-size:20px; color:#4C4C4C;">
 						${status.count}
 					</span>
 				</td>
-				<td width="40%">
-					<span class="content_title">
-						<a href="IndieServlet?command=Playlist_Detail_FormAction&pl_num=${my_playlist.pl_num}">
-							${my_playlist.pl_title}
+					<td width="10%">
+					<a href="#">
+						<img src="img/music/${playlist_songs.m_album_pic}" width="50" height="50"/>
+					</a>
+				</td>
+				<td width="30%">
+					<span style="font-size:20px; color:#4C4C4C;">
+						<a href="IndieServlet?command=music_detail&m_id=${playlist_songs.m_id}">
+							${playlist_songs.m_name}
 						</a>
 					</span>
 				</td>
-				<td class="icon" width="45%">
-					<a href="IndieServlet?command=Play_PlaylistAction&pl_num=${my_playlist.pl_num}">
+				<td width="20%">
+					<span style="font-size:20px; color:#BDBDBD;">
+						${playlist_songs.m_artist}
+					</span>
+				</td>
+				<td width="20%">
+					<span style="font-size:20px; color:#BDBDBD;">
+						${playlist_songs.m_album}
+					</span>
+				</td>
+				<td class="icon">
+					<a>
 						<img width="30" height="30" src="img/chart/icon_playBefore.png"/>
+					</a>
+				</td>
+				<td class="icon">
+					<a href="IndieServlet?command=addlist&m_id=${playlist_songs.m_id}" onClick="history.go(0)">
+						<img width="30" height="30" src="img/chart/icon_listBefore.png"/>
+					</a>
+				</td>
+				<td class="icon">
+					<a>
+						<img width="30" height="30" src="img/chart/icon_lyricsBefore.png"/>
 					</a>
 				</td>
 			</tr>

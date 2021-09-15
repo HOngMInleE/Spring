@@ -2,31 +2,24 @@ package com.indie.dto;
 
 import java.sql.Timestamp;
 
-public class PlaylistVO {
+public class PlaylistVO { // m_id 삭제함
 
 	private int pl_num; // 플레이리스트 순번
-	private String m_id; // 노래 고유 번호 String?? // MusicVO m_id에서 생성 후 사용
-	private String pl_id; // 아이디 // MemberVO mb_id 값 대입해서 사용
+	private String mb_id; // 아이디 // MemberVO mb_id 값 대입해서 사용
 	private String pl_title;// 플레이리스트 제목
 	private Timestamp pl_inDate; // 플레이리스트 담은 날짜
 	
-	public String getM_id() {
-		return m_id;
-	}
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
-	}
 	public int getPl_num() {
 		return pl_num;
 	}
 	public void setPl_num(int pl_num) {
 		this.pl_num = pl_num;
 	}
-	public String getPl_id() {
-		return pl_id;
+	public String getMb_id() {
+		return mb_id;
 	}
-	public void setPl_id(String pl_id) {
-		this.pl_id = pl_id;
+	public void setMb_id(String mb_id) {
+		this.mb_id = mb_id;
 	}
 	public String getPl_title() {
 		return pl_title;

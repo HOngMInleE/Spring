@@ -18,7 +18,11 @@ public class Play_PlaylistAction implements Action {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Playlist_PlayAction 실행");
-		String url = "playlist/playlist.jsp";
+		String url = "playlist/myPlaylist.jsp";
+		
+		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
+		
+		// 해당 테이블(mb_id_pl_num) 검색후 전곡 재생
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

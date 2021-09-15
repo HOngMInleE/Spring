@@ -14,24 +14,32 @@ import com.indie.dao.BoardDAO;
 import com.indie.dao.PlaylistDAO;
 import com.indie.dto.BoardVO;
 import com.indie.dto.MemberVO;
+import com.indie.dto.PlaylistVO;
 
-public class Playlist_DeleteAction implements Action {
+public class Playlist_InsertAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Playlist_InsertAction 실행");
 		
-		System.out.println("Playlist_DeleteAction 실행");
-		String url = "playlist/MyPlaylist.jsp";
+		String url = "IndieServlet?command=Playlist_My_FormAction&mb_id="+request.getAttribute("loginUser.getMb_id");
 		
 		HttpSession session = request.getSession();
+		PlaylistVO plVO = new PlaylistVO();
 		PlaylistDAO plDAO = PlaylistDAO.getInstance();
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
 		
-		plDAO.deletePlaylist(pl_num);
-		plDAO.deletePlaylistTable(loginUser.getMb_id(), pl_num);
+		
+		String pl_title = request.getParameter("pl_title");
+		
+		plVO.setMb_id(loginUser.getMb_id());
+		plVO.setPl_title(pl_title);
+		
+		plDAO.insertPlaylist();
+		plDAO.insertPlaylist_Music(loginUser.getMb_id(), pl_num);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

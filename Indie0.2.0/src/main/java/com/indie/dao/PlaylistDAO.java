@@ -3,8 +3,10 @@ package com.indie.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.indie.dto.MusicVO;
 import com.indie.dto.PlaylistVO;
 
 import util.DBManager;
@@ -30,40 +32,152 @@ public class PlaylistDAO {
 	// 나의 플레이리스트불러오기
 	public List<PlaylistVO> getPlaylistById(String mb_id) {
 		// mb_id값 받아와 해당 id값을 가진 모든 컬럼 (title은 distinct:고유값출력) 받아옴
-		return null;
+		ArrayList<PlaylistVO> my_playlist = new ArrayList<PlaylistVO>();
+		String sql= "select * from playlist where mb_id = ? order by pl_num asc";
+		
+		try {
+		  conn = DBManager.getConnection();
+	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setString(1, mb_id);
+	      rs = pstmt.executeQuery();
+	      
+	      while (rs.next()) {
+	    	  	PlaylistVO plVO = new PlaylistVO();	
+	    	  	plVO.setPl_num(rs.getInt("PL_NUM"));
+	    	  	plVO.setMb_id(rs.getString("MB_ID"));
+	    	  	plVO.setPl_title(rs.getString("PL_TITLE"));
+	    	  	plVO.setPl_inDate(rs.getTimestamp("PL_INDATE"));
+				my_playlist.add(plVO);
+	      }
+		} catch (Exception e) {
+		      e.printStackTrace();
+		      System.out.println("getPlaylistById() 오류");
+		} finally {
+		  DBManager.close(conn, pstmt, rs);
+		}
+		return my_playlist;
+	}
+	
+	
+//Read<List> 
+	// 해당 플레이리스트에 해당하는 노래 정보들 불러오기
+	public List<MusicVO> getPlaylistSongs(String mb_id,int pl_num) {
+		List<MusicVO> playlist_songs = new ArrayList<MusicVO>();
+		MusicVO musicVO = null;
+		// 해당 테이블 검색, 모든 곡 정보 받아와서 해당 곡 정보들 조회
+		String sql= "select * from music where music.m_id in (select m_id from \""+mb_id+"_"+pl_num+"\") ";
+		try {
+		  conn = DBManager.getConnection();
+	      pstmt = conn.prepareStatement(sql);
+	      rs = pstmt.executeQuery();
+	      
+	      while (rs.next()) {
+	    	  	musicVO = new MusicVO();
+				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+				playlist_songs.add(musicVO);
+	      }
+		} catch (Exception e) {
+		      e.printStackTrace();
+		      System.out.println("getPlaylistSongs() 오류");
+		} finally {
+		  DBManager.close(conn, pstmt, rs);
+		}
+		return playlist_songs;
 	}
 	
 //Create  
-	// 플레이리스트 생성하기
-	public void insertPlaylist(String mb_id,int pl_num) {
-		// num:pl_id,pl_id, pl_num, pl_num이 일치시 증가// 삭제
+	//플레이리스트 생성// playlist 정보 담는 컬럼
+	public void insertPlaylist() {
 		// num : pk로 구분
-		String sql = "create table \""+mb_id+"_"+pl_num+"\"(\"M_id\" NUMBER(8,2))";
-		
-	}
+			PlaylistVO plVO = new PlaylistVO();
+			String sql = "insert into playlist "
+					+ "values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),?,?,to_timestamp(sysdate, 'YYYY-MM-DD'))";
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, plVO.getMb_id());
+				pstmt.setString(2, plVO.getPl_title());
+				
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("insertPlaylist() 오류");
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
 	
-//Creat 
-	// 플레이리스트에 해당 곡 담기 
-	public void addPlaylist(int m_id, String mb_id) {
-		// 노래 담기버튼-> 플레이리스트 선택시 실행 메소드
-		// pl_id,pl_id, pl_num, pl_num이 일치시 추가
-		// 해당 곡 정보-> playlist table 에 저장
-		String sql = "insert into playlist (PL_NUM, M_ID, MB_ID) values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),?,?)";
+//Create  
+	//플레이리스트 생성// playlist 곡 정보 담는 테이블
+	public void insertPlaylist_Music(String mb_id,int pl_num) {
+		// num : pk로 구분
+		String sql = "create table \""+mb_id+"_"+pl_num+"\" (\"PL_NUM\" NUMBER(8,2),\"M_id\" NUMBER(8,2))";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, m_id);
-			pstmt.setString(2, mb_id);
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("insertBoard() 오류");
+			System.out.println("insertPlaylist_Music() 오류");
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	
+//Creat 
+	// 플레이리스트에 해당 곡 담기 
+	public void addPlaylist(String mb_id,int pl_num,int m_id) {
+//		// 노래 담기버튼-> 플레이리스트 선택시 실행 메소드
+		String sql = "insert into \""+mb_id+"_"+pl_num+"\" values(?,?)";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pl_num);
+			pstmt.setInt(2, m_id);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("addPlaylist() 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+//	public void addPlaylist(int m_id, String mb_id) {
+//		// 노래 담기버튼-> 플레이리스트 선택시 실행 메소드
+//		// pl_id,pl_id, pl_num, pl_num이 일치시 추가
+//		// 해당 곡 정보-> playlist table 에 저장
+//		String sql = "insert into playlist (PL_NUM, M_ID, MB_ID) values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),?,?)";
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, m_id);
+//			pstmt.setString(2, mb_id);
+//			
+//			pstmt.executeUpdate();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			System.out.println("insertBoard() 오류");
+//		} finally {
+//			DBManager.close(conn, pstmt);
+//		}
+//	}
 	
 //Read  
 	// 플레이리스트 재생(전체 재생)
@@ -71,48 +185,65 @@ public class PlaylistDAO {
 		// playlist play하는 메소드
 	}
 	
-//Read<list>  
-	// 해당 플레이리스트 상세보기
-	public List<PlaylistVO> getPlaylistDetail(String pl_id, String pl_num) {
-		// insert와 같은 원리, m_id값(List타입)만 받아옴
-		return null;
-	}
-	
-//Read<List> 
-	// 해당 플레이리스트에 노래 정보 불러오기
-	public List<PlaylistVO> getPlaylistSongs(String m_id) {
-		// m_id 값 대입, 해당 곡 정보 받아오기 (musicVO통해서)
-		// playlist_songs return.
-		return null;
+//Delete 
+	// 해당 플레이리스트 삭제하기
+	public void deletePlaylist(int pl_num) {
+		String sql = "delete playlist where pl_num = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pl_num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("deletePlaylist() 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 	
 //Delete 
-	// 해당 플레이리스트 삭제하기
-	public void deletePlaylist(String pl_id,int pl_num) {
-		// pl_id, pl_num 일치시 삭제
+	// 해당 플레이리스트의 곡 정보들 삭제하기
+	public void deletePlaylistTable(String mb_id,int pl_num) {
+		String sql = "drop table \""+mb_id+"_"+pl_num+"\" ";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("deletePlaylist() 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 	
 //Delete 
 	// 해당 플레이리스트내 해당 곡 삭제
-	public void deleteSongsInPlaylist(String m_id) {
+	public void deleteSongsInPlaylist(String mb_id,int pl_num,String m_id) { // String -> int 로 바궈야함.
 		// insert와 같은 원리, pl_id,pl_id, pl_num, pl_num이 일치시 해당 컬럼 삭제 
+		String sql = "delete \""+mb_id+"_"+pl_num+"\" where m_id = ?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("deleteSongsInPlaylist() 오류");
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

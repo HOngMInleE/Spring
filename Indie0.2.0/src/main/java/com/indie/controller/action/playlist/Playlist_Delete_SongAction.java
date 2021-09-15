@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.indie.controller.action.Action;
 import com.indie.dao.BoardDAO;
+import com.indie.dao.PlaylistDAO;
 import com.indie.dto.BoardVO;
+import com.indie.dto.MemberVO;
 
 public class Playlist_Delete_SongAction implements Action {
 
@@ -20,7 +22,16 @@ public class Playlist_Delete_SongAction implements Action {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Playlist_DeleteAction 실행");
-		String url = "playlist/playlist.jsp";
+		String url = "playlist/playlist_detail.jsp";
+		
+		HttpSession session = request.getSession();
+		PlaylistDAO plDAO = PlaylistDAO.getInstance();
+		
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
+		String m_id = request.getParameter("m_id");
+		
+		plDAO.deleteSongsInPlaylist(loginUser.getMb_id(), pl_num, m_id);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
