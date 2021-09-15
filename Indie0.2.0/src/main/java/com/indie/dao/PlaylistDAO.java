@@ -27,7 +27,7 @@ public class PlaylistDAO {
 //CRUD
 	
 //Read 
-	// id값이 같은 플레이리스트불러오기
+	// 나의 플레이리스트불러오기
 	public List<PlaylistVO> getPlaylistById(String mb_id) {
 		// mb_id값 받아와 해당 id값을 가진 모든 컬럼 (title은 distinct:고유값출력) 받아옴
 		return null;
@@ -35,8 +35,11 @@ public class PlaylistDAO {
 	
 //Create  
 	// 플레이리스트 생성하기
-	public void insertPlaylist(String pl_id) {
-		// num:pl_id,pl_id, pl_num, pl_num이 일치시 증가.
+	public void insertPlaylist(String mb_id,int pl_num) {
+		// num:pl_id,pl_id, pl_num, pl_num이 일치시 증가// 삭제
+		// num : pk로 구분
+		String sql = "create table \""+mb_id+"_"+pl_num+"\"(\"M_id\" NUMBER(8,2))";
+		
 	}
 	
 //Creat 

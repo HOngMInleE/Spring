@@ -14,11 +14,14 @@ import com.nonage.controller.action.LoginAction;
 import com.nonage.controller.action.LoginFormAction;
 import com.nonage.controller.action.LogoutAction;
 import com.nonage.controller.action.MyPageAction;
+import com.nonage.controller.action.OrderDetailAction;
 import com.nonage.controller.action.OrderInsertAction;
 import com.nonage.controller.action.OrderListAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
 import com.nonage.controller.action.QnaListAction;
+import com.nonage.controller.action.QnaWriteAction;
+import com.nonage.controller.action.QnaWriteFormAction;
 
 public class ActionFactory {
 
@@ -85,11 +88,18 @@ public class ActionFactory {
 			
 		}else if(command.equals("order_list")) {
 			action = new OrderListAction();	
-			
 		}else if (command.equals("mypage")) {
 	        action = new MyPageAction();
-	    }else if(command.equals("qna_list")) {
+	    }else if(command.equals("order_detail")) {
+	    	action = new OrderDetailAction();
+	    }
+	    // Qna
+		else if(command.equals("qna_list")) {
 	    	action = new QnaListAction();
+	    }else if(command.equals("qna_write_form")) {
+	    	action = new QnaWriteFormAction();
+	    }else if(command.equals("qna_write")) {
+	    	action = new QnaWriteAction();
 	    }
 	    
 	    return action;

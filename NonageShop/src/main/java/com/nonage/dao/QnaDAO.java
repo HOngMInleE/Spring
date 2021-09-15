@@ -54,7 +54,24 @@ public class QnaDAO {
 		return qnaList;
 	}// qnaList()
 	
-	
+	public void insertQna(QnaVO qnaVO, String session_id) {
+		String sql = "insert into qna (qseq, subject, content, id) "
+				+ "values(qna_seq.nextval, ?, ?, ?)";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qnaVO.getSubject());
+			pstmt.setString(2, qnaVO.getContent());
+			pstmt.setString(3, session_id);
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("insertQna 오류");
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}// insertQna()
 	
 	
 	
