@@ -95,9 +95,9 @@
 	</div>
 	
 	<%	// 로그인 값이 존재 하면 보여지고 없으면 안보여짐.
-//		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		 MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 	
-//		 if (loginUser != null) {
+		 if (loginUser != null) {
 	%>
  	<div class="subNavWrap">
  		<div class="title"> 
@@ -127,13 +127,13 @@
  		</ul> 
  	</div> 
 	<%
-//	 } else {
+	 } else {
 	%>
 		<h1>로그인을 하셔야 합니다.</h1>
 	<%
 	 //	<div class="hr"></div>
 	 //</div>
-//	 }
+	 }
 	%>
 	<div class="hr"></div>
 </div>

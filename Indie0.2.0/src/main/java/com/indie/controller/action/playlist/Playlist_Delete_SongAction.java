@@ -29,7 +29,7 @@ public class Playlist_Delete_SongAction implements Action {
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
-		String m_id = request.getParameter("m_id");
+		int m_id = Integer.parseInt(request.getParameter("m_id"));
 		
 		plDAO.deleteSongsInPlaylist(loginUser.getMb_id(), pl_num, m_id);
 		

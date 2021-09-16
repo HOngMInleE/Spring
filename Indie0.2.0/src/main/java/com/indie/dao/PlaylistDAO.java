@@ -73,7 +73,7 @@ public class PlaylistDAO {
 	      
 	      while (rs.next()) {
 	    	  	musicVO = new MusicVO();
-				musicVO.setM_id(rs.getString("M_ID"));
+				musicVO.setM_id(rs.getInt("M_ID"));
 				musicVO.setM_genre(rs.getString("M_GENRE"));
 				musicVO.setM_nation(rs.getString("M_NATION"));
 				musicVO.setM_name(rs.getString("M_NAME"));
@@ -226,14 +226,14 @@ public class PlaylistDAO {
 	
 //Delete 
 	// 해당 플레이리스트내 해당 곡 삭제
-	public void deleteSongsInPlaylist(String mb_id,int pl_num,String m_id) { // String -> int 로 바궈야함.
+	public void deleteSongsInPlaylist(String mb_id,int pl_num,int m_id) { // String -> int 로 바궈야함.
 		// insert와 같은 원리, pl_id,pl_id, pl_num, pl_num이 일치시 해당 컬럼 삭제 
 		String sql = "delete \""+mb_id+"_"+pl_num+"\" where m_id = ?";
 		
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m_id);
+			pstmt.setInt(1, m_id);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {

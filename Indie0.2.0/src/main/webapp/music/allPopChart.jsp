@@ -95,9 +95,6 @@
 		<button onclick="location.href='IndieServlet?command=AllPopular'">종합</button>
 		<button onclick="location.href='IndieServlet?command=KorPopular'">국내</button>
 		<button onclick="location.href='IndieServlet?command=ForPopular'">해외</button>
-		<!-- <a href="IndieServlet?command=AllPopular"><span style="font-size:1.2em; font-weight:bold; color:#8C8C8C;">종합</span></a>
-		<a href="IndieServlet?command=KorPopular"><span style="font-size:1.2em; font-weight:bold; color:#8C8C8C;">국내</span></a>
-		<a href="IndieServlet?command=ForPopular"><span style="font-size:1.2em; font-weight:bold; color:#8C8C8C;">해외</span></a> -->
 	</div>
 	<table class="chart">
 			<tr>
