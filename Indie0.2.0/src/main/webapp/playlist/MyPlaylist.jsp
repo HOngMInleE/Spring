@@ -91,7 +91,7 @@ div {
 		</style>
 	<script type="text/javascript">
 	function my_playlist() {
-		var url = "IndieServlet?command=Playlist_Insert_FormAction";
+		var url = "IndieServlet?command=Playlist_Insert_Form";
 		window.open(url, "_blank_1",
 				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
 		}
@@ -117,7 +117,7 @@ div {
 				</td>
 				<td width="40%">
 					<span class="content_title">
-						<a href="IndieServlet?command=Playlist_Detail_FormAction&pl_num=${my_playlist.pl_num}">
+						<a href="IndieServlet?command=Playlist_Detail_Form&pl_num=${my_playlist.pl_num}">
 							${my_playlist.pl_title}
 						</a>
 					</span>

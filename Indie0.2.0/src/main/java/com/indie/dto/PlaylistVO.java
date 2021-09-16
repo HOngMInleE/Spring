@@ -2,6 +2,9 @@ package com.indie.dto;
 
 import java.sql.Timestamp;
 
+import lombok.ToString;
+
+@ToString
 public class PlaylistVO { // m_id 삭제함
 
 	private int pl_num; // 플레이리스트 순번

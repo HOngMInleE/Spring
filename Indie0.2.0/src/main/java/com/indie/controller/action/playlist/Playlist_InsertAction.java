@@ -23,22 +23,26 @@ public class Playlist_InsertAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("Playlist_InsertAction 실행");
 		
-		String url = "IndieServlet?command=Playlist_My_FormAction&mb_id="+request.getAttribute("loginUser.getMb_id");
 		
 		HttpSession session = request.getSession();
 		PlaylistVO plVO = new PlaylistVO();
 		PlaylistDAO plDAO = PlaylistDAO.getInstance();
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
 		
+		String url = "IndieServlet?command=Playlist_My_FormAction&mb_id="+loginUser.getMb_id();
 		
 		String pl_title = request.getParameter("pl_title");
 		
 		plVO.setMb_id(loginUser.getMb_id());
 		plVO.setPl_title(pl_title);
+		System.out.println("========== :: plVO getMb_id :: "+plVO.getMb_id());
+		System.out.println("========== :: plVO pl_title :: "+plVO.getPl_title());
 		
-		plDAO.insertPlaylist();
+		plDAO.insertPlaylist(plVO);
+		int pl_num = plDAO.getPlNumInPlaylist();
+//		int pl_num = get_pl_num.getPl_num();
+		System.out.println(pl_num);
 		plDAO.insertPlaylist_Music(loginUser.getMb_id(), pl_num);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

@@ -96,11 +96,11 @@ public class PlaylistDAO {
 	
 //Create  
 	//플레이리스트 생성// playlist 정보 담는 컬럼
-	public void insertPlaylist() {
+	public void insertPlaylist(PlaylistVO plVO) {
 		// num : pk로 구분
-			PlaylistVO plVO = new PlaylistVO();
+			//PlaylistVO plVO = new PlaylistVO();
 			String sql = "insert into playlist "
-					+ "values((SELECT NVL(MAX(playlist.pl_num), 0)+1 FROM playlist),?,?,to_timestamp(sysdate, 'YYYY-MM-DD'))";
+					+ "values((SELECT NVL(MAX(pl_num), 0)+1 FROM playlist),?,?,to_timestamp(sysdate, 'YYYY-MM-DD'))";
 			try {
 				conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
@@ -109,6 +109,8 @@ public class PlaylistDAO {
 				pstmt.setString(2, plVO.getPl_title());
 				
 				pstmt.executeUpdate();
+				
+				//result = rs.getInt("PL_NUM");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -117,7 +119,33 @@ public class PlaylistDAO {
 				DBManager.close(conn, pstmt);
 			}
 		}
-	
+	//Create  
+		//플레이리스트 생성// playlist 정보 담는 컬럼
+		public int getPlNumInPlaylist() {
+			// num : pk로 구분
+				//PlaylistVO plVO = new PlaylistVO();
+				int result = 0;
+				
+				String getPl_Num = "select max(pl_num) from playlist";
+				try {
+					conn = DBManager.getConnection();
+					pstmt = conn.prepareStatement(getPl_Num);
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						result = rs.getInt("max(pl_num)");
+						System.out.println("result 값 :::::");
+					}
+					//result = rs.getInt("PL_NUM");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("getPlNumInPlaylist() 오류");
+				} finally {
+					DBManager.close(conn, pstmt,rs);
+				}
+				return result;
+			}
 //Create  
 	//플레이리스트 생성// playlist 곡 정보 담는 테이블
 	public void insertPlaylist_Music(String mb_id,int pl_num) {

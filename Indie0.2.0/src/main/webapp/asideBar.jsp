@@ -107,7 +107,7 @@
  		<br>
  		<ul>
  			<li class="list">
- 				<a href="IndieServlet?command=Playlist_My_FormAction&mb_id=${sessionScopeloginUser.mb_id}">- 플레이리스트 </a>
+ 				<a href="IndieServlet?command=Playlist_My_Form&mb_id=${loginUser.getMb_id()}">- 플레이리스트 </a>
  			</li>
  			<br>
 

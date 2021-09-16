@@ -20,7 +20,7 @@ public class LoginAction implements Action {
 
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		System.out.println(id + pwd);
+		System.out.println(id +", " + pwd);
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO memberVO = memberDAO.getMember(id);
 

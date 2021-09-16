@@ -41,16 +41,14 @@
 	}
 </style>
 <script type="text/javascript">
-	function result(pl_title) {
-	   opener.document.formm.pl_title.value=pl_title;
-	  /*  // opener.document.formm.addr1.value=sido+" "+gugun+" "+dong; */
-	   self.close();
+function result(pl_title) {
+	 window.open('','_self').close();
 	};
 </script>
 </head>
 <body>
 	<div id="popup">
-		<form method="post" name="formm" action="IndieServlet?command=Playlist_InsertAction">
+		<form method="post" name="formm" action="IndieServlet?command=Playlist_Insert">
 			플레이리스트 이름 : <input type="text" name="pl_title">
 					<input type="submit" value="확인" class="submit">
 		</form>

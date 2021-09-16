@@ -166,19 +166,19 @@ public class ActionFactory {
 			action = new Playlist_My_FormAction();
 		}else if(command.equals("Playlist_Insert_Form")) { // 플레이리스트 생성 form
 			action = new Playlist_Insert_FormAction();
-		}else if(command.equals("Playlist_InsertAction")) { // 플레이리스트 생성
+		}else if(command.equals("Playlist_Insert")) { // 플레이리스트 생성
 			action = new Playlist_InsertAction();
 		}else if(command.equals("Playlist_Detail_Form")) { // 플레이리스트 상세보기 form
 			action = new Playlist_Detail_FormAction();
-		}else if(command.equals("Play_PlaylistAction")) { // 플레이리스트 전곡재생
+		}else if(command.equals("Play_Playlist")) { // 플레이리스트 전곡재생
 			action = new Play_PlaylistAction();
-		}else if(command.equals("Playlist_DeleteAction")) { // 플레이리스트 삭제
+		}else if(command.equals("Playlist_Delete")) { // 플레이리스트 삭제
 			action = new Playlist_DeleteAction();
-		}else if(command.equals("Play_Delete_SongAction")) { // 플레이리스트 해당 곡 삭제
+		}else if(command.equals("Play_Delete_Song")) { // 플레이리스트 해당 곡 삭제
 			action = new Playlist_Delete_SongAction();
 		}else if(command.equals("Add_Song_Playlist_Form")) { // 플레이리스트 곡 추가 Form
 			action = new Add_Song_Playlist_FormAction();
-		}else if(command.equals("AddListAction")) { // 플레이리스트에 곡 담기
+		}else if(command.equals("AddList")) { // 플레이리스트에 곡 담기
 			action = new AddListAction();
 		}
 		// member

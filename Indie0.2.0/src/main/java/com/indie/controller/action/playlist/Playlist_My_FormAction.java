@@ -19,7 +19,7 @@ public class Playlist_My_FormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Playlist_My_FormAction 실행");
+		System.out.println("Playlist_My_Form 실행");
 		
 		String url = "/playlist/MyPlaylist.jsp";
 		
