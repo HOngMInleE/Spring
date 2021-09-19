@@ -13,6 +13,7 @@ import com.indie.controller.action.Action;
 import com.indie.dao.PlaylistDAO;
 import com.indie.dto.MemberVO;
 import com.indie.dto.MusicVO;
+import com.indie.dto.PlaylistVO;
 
 public class Playlist_Detail_FormAction implements Action {
 
@@ -28,9 +29,12 @@ public class Playlist_Detail_FormAction implements Action {
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
+		String pl_title = request.getParameter("pl_title");
 		
 		List<MusicVO> playlist_songs = plDAO.getPlaylistSongs(loginUser.getMb_id(), pl_num);
 		
+		request.setAttribute("pl_title", pl_title);
+		request.setAttribute("pl_num", pl_num);
 		request.setAttribute("playlist_songs", playlist_songs);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

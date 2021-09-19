@@ -25,12 +25,12 @@ public class Playlist_InsertAction implements Action {
 		
 		
 		HttpSession session = request.getSession();
-		PlaylistVO plVO = new PlaylistVO();
 		PlaylistDAO plDAO = PlaylistDAO.getInstance();
+		PlaylistVO plVO = new PlaylistVO();
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		
-		String url = "IndieServlet?command=Playlist_My_FormAction&mb_id="+loginUser.getMb_id();
+		String url = "IndieServlet?command=Playlist_My_Form";
 		
 		String pl_title = request.getParameter("pl_title");
 		
@@ -45,8 +45,7 @@ public class Playlist_InsertAction implements Action {
 		System.out.println(pl_num);
 		plDAO.insertPlaylist_Music(loginUser.getMb_id(), pl_num);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

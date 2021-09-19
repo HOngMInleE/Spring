@@ -67,7 +67,9 @@ a.join:link, a.join:hover, a.join:visited, a.join {
 	<div id="main">
 		<article>
 			<div class="frame">
-				<img class="logo" alt="로고이미지" src="${pageContext.request.contextPath}/img/common/logo_01.png" style="width: 150px;">
+				<a href="${pageContext.request.contextPath}/IndieServlet?command=index">
+					<img class="logo" alt="로고이미지" src="${pageContext.request.contextPath}/img/common/logo_01.png" style="width: 150px;">
+				</a>
 			</div>
 			<form method="post" action="${pageContext.request.contextPath}/IndieServlet?command=login">
 				<fieldset>

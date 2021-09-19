@@ -22,7 +22,8 @@ public class Playlist_DeleteAction implements Action {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Playlist_DeleteAction 실행");
-		String url = "playlist/MyPlaylist.jsp";
+		
+		String url = "IndieServlet?command=Playlist_My_Form";
 		
 		HttpSession session = request.getSession();
 		PlaylistDAO plDAO = PlaylistDAO.getInstance();
@@ -33,8 +34,7 @@ public class Playlist_DeleteAction implements Action {
 		plDAO.deletePlaylist(pl_num);
 		plDAO.deletePlaylistTable(loginUser.getMb_id(), pl_num);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

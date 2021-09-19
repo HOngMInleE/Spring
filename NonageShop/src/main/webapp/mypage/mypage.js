@@ -16,14 +16,14 @@ function go_cart_delete() {
 			count++;
 		}
 	}
-
+/*
 	for (var i = 0; i < document.formm.cseq.length; i++) {
 //		alert("" + document.formm.cseq[i].checked);
 		if (document.formm.cseq[i].checked == true) {
 			count++;
 //			alert("" + count);
 		}
-	}
+	}*/
 	if (count == 0) {
 		alert("삭제할 항목을 선택해 주세요.");
 

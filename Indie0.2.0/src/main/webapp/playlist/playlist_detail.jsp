@@ -29,26 +29,40 @@ div {
 			
 			dl.top_menu {
 				width: 720px;
-				height: 70px;
+				height: 130px;
 			}
 			dt.sub_title {
-				font-weight: bold;
-				font-size: 40px;
+				font-size: 25px;
+				margin-bottom: 10px;
+			    background-color: #f6f6f6;
+			    padding: 10px;
 			}
 			
-			dt.playlist_make {
-				float: right;
+			dt.playlist_title {
+			    text-align: center;
+			    font-weight:lighter;
+				font-size: 35px;
+				padding:10px;
+			    background-color: #edf2f5;
+				display: inline-block;
+				margin: 10px;
 			}
 
+			dt.playlist_add {
+				float:right;
+				margin-top: 30px;
+			}
+			
 			dt button{
 			  color:#8C8C8C;
 			  background-color: #fff;
 			  border:1px solid #8C8C8C;
-			  font-size:1.2em;
+			  font-size: 25px;
 			  font-weight:bold;
 			  padding:0 15px;
 			  cursor:pointer;
 			}
+			
 			button:hover{
 			  background:#000000;
 			  color:#fff;
@@ -99,17 +113,17 @@ div {
 <article class="playlist_wrap">
 	<dl class="top_menu">
 		<dt class="sub_title"> 플레이리스트 정보 </dt>
-		<dt class="playlist_make">
-			<!-- <button onclick="my_playlist()">담기</button> -->
+		<dt class="playlist_add">
+			<button onclick="my_playlist()">담기</button>
 		</dt>
 		<dt class="playlist_title">
-			${my_playlist.pl_title}
+			${pl_title}
 		</dt>
 	</dl>
 	<hr color="grey" style="margin:10px 0 10px 0; height: 1px;">
 	<table class="playlist_content">
 		<tr class="list_title">
-			<th>곡명</th><th>아티스트</th><th>앨범</th><th>듣기</th><th>삭제</th>
+			<th>NO</th><th></th><th>곡명</th><th>아티스트</th><th>듣기</th><th>삭제</th>
 		</tr>
 		<c:forEach items="${playlist_songs}" var="playlist_songs" varStatus="status">
 			<tr class="list_content">
@@ -131,13 +145,8 @@ div {
 					</span>
 				</td>
 				<td width="20%">
-					<span style="font-size:20px; color:#BDBDBD;">
+					<span style="font-size:20px;">
 						${playlist_songs.m_artist}
-					</span>
-				</td>
-				<td width="20%">
-					<span style="font-size:20px; color:#BDBDBD;">
-						${playlist_songs.m_album}
 					</span>
 				</td>
 				<td class="icon">
@@ -146,13 +155,8 @@ div {
 					</a>
 				</td>
 				<td class="icon">
-					<a href="IndieServlet?command=addlist&m_id=${playlist_songs.m_id}" onClick="history.go(0)">
-						<img width="30" height="30" src="img/chart/icon_listBefore.png"/>
-					</a>
-				</td>
-				<td class="icon">
-					<a>
-						<img width="30" height="30" src="img/chart/icon_lyricsBefore.png"/>
+					<a href="IndieServlet?command=Play_Delete_Song&m_id=${playlist_songs.m_id}&pl_num=${pl_num}" onClick="history.go(0)">
+						<img width="30" height="30" src="img/chart/icon_Delete.png"/>
 					</a>
 				</td>
 			</tr>

@@ -162,7 +162,7 @@ dd.list_content {
 				<c:forEach items="${boardList}" var="boardList">
 					<tr class="board_list" onclick="location.href='IndieServlet?command=Board_Detail_form&b_num=${boardList.b_num}'">
 						<td class="image">
-							<img alt="게시판 이미지" src="${pageContext.request.contextPath}/img/music/${boardList.b_picture}"
+							<img alt="게시판 이미지" src="${pageContext.request.contextPath}/img/board/${boardList.b_picture}"
 								width="240" height="135">
 						</td>
 						<td>

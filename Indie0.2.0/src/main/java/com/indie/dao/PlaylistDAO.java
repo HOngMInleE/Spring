@@ -134,7 +134,7 @@ public class PlaylistDAO {
 					
 					if (rs.next()) {
 						result = rs.getInt("max(pl_num)");
-						System.out.println("result 값 :::::");
+						System.out.println("해당 pl_num 값 :::::");
 					}
 					//result = rs.getInt("PL_NUM");
 				} catch (Exception e) {
@@ -150,7 +150,7 @@ public class PlaylistDAO {
 	//플레이리스트 생성// playlist 곡 정보 담는 테이블
 	public void insertPlaylist_Music(String mb_id,int pl_num) {
 		// num : pk로 구분
-		String sql = "create table \""+mb_id+"_"+pl_num+"\" (\"PL_NUM\" NUMBER(8,2),\"M_id\" NUMBER(8,2))";
+		String sql = "create table \""+mb_id+"_"+pl_num+"\" (\"PL_NUM\" NUMBER(8,2),\"M_ID\" NUMBER(8,2))";
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -254,7 +254,7 @@ public class PlaylistDAO {
 	
 //Delete 
 	// 해당 플레이리스트내 해당 곡 삭제
-	public void deleteSongsInPlaylist(String mb_id,int pl_num,int m_id) { // String -> int 로 바궈야함.
+	public void deleteSongsInPlaylist(String mb_id,int pl_num,int m_id) { 
 		// insert와 같은 원리, pl_id,pl_id, pl_num, pl_num이 일치시 해당 컬럼 삭제 
 		String sql = "delete \""+mb_id+"_"+pl_num+"\" where m_id = ?";
 		

@@ -29,19 +29,28 @@ div {
 			
 			dl.top_menu {
 				width: 720px;
-				height: 100px;
+				height: 140px;
 			}
 			dt.sub_title {
 				font-weight: bold;
 				font-size: 40px;
 				text-align: center;
-				width: 200px;
+				width: 400px;
+				margin-bottom: 30px;
 				padding: 10px 0 10px 0;
 				background-color: #edf2f5;
 			}
 			
 			dt.playlist_make {
 				float: right;
+				vertical-align: middle;
+				font-size: 25px;
+			}
+			
+			dt.playlist_make .make {
+				width: 300px;
+			}
+			dt.playlist_make .submit {
 				font-size: 20px;
 			}
 
@@ -92,19 +101,20 @@ div {
 			td.icon img{
 			
 			}
-			
 		</style>
-	<article class="playlist_wrap">
+<article class="playlist_wrap">
+	<form method="post" name="formm" action="IndieServlet?command=Playlist_Insert">
 		<dl class="top_menu">
-			<dt class="sub_title">마이 뮤직</dt>
+			<dt class="sub_title">플레이리스트 만들기</dt>
 			<dt class="playlist_make">
-				<button onclick="location.href='IndieServlet?command=Playlist_Insert_Form'">플레이리스트 만들기</button>
+				플레이리스트 이름 : <input type="text" name="pl_title" class="make" value placeholder="제목을 입력해 주세요.">
+				<input type="submit" value="만들기" class="submit">
 			</dt>
 		</dl>
 		<hr color="grey" style="margin:10px 0 10px 0; height: 1px;">
 		<table class="playlist_content">
 			<tr class="list_title">
-				<th>NO</th><th>플레이리스트 정보</th><th>전체 듣기</th><th>삭제</th>
+				<th>NO</th><th>현재 나의 플레이리스트</th>
 			</tr>
 			<c:forEach items="${my_playlist}" var="my_playlist" varStatus="status">
 				<tr class="list_content">
@@ -113,27 +123,16 @@ div {
 							${status.count}
 						</span>
 					</td>
-					<td width="35%">
+					<td width="40%">
 						<span class="content_title">
-							<a href="IndieServlet?command=Playlist_Detail_Form&pl_num=${my_playlist.pl_num}&pl_title=${my_playlist.pl_title}">
-								${my_playlist.pl_title}
-							</a>
+							${my_playlist.pl_title}
 						</span>
-					</td>
-					<td class="icon">
-						<a href="IndieServlet?command=Play_PlaylistAction&pl_num=${my_playlist.pl_num}">
-							<img width="30" height="30" src="img/chart/icon_playBefore.png"/>
-						</a>
-					</td>
-					<td class="icon">
-						<a href="IndieServlet?command=Playlist_Delete&pl_num=${my_playlist.pl_num}">
-							<img width="30" height="30" src="img/chart/icon_Delete.png"/>
-						</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-	</article>
+	</form>
+</article>
 		
 		
 	</div>

@@ -1,7 +1,6 @@
 package com.indie.controller.action.playlist;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.indie.controller.action.Action;
-import com.indie.dao.BoardDAO;
 import com.indie.dao.PlaylistDAO;
-import com.indie.dto.BoardVO;
 import com.indie.dto.MemberVO;
 
 public class Playlist_Delete_SongAction implements Action {
@@ -29,9 +26,15 @@ public class Playlist_Delete_SongAction implements Action {
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
-		int m_id = Integer.parseInt(request.getParameter("m_id"));
+//		int m_id = Integer.parseInt(request.getParameter("m_id"));
 		
-		plDAO.deleteSongsInPlaylist(loginUser.getMb_id(), pl_num, m_id);
+		String[] m_idArr = request.getParameterValues("m_id");
+		
+		for(String m_id : m_idArr) {
+			System.out.println("플레이리스트에서 곡 삭제 요청 ::" + m_id);
+			plDAO.deleteSongsInPlaylist(loginUser.getMb_id(), pl_num,Integer.parseInt(m_id));
+		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

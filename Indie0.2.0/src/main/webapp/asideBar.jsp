@@ -103,7 +103,7 @@
  		<br> 
  		<ul> 
  			<li class="list"> 
- 				<a href="IndieServlet?command=Playlist_FormAction">- 플레이리스트 </a> 
+ 				<a class="navbtn" href="IndieServlet?command=Playlist_My_Form">- 플레이리스트 </a> 
  			</li> 
  			<br> 
 <!-- 			<li class="list"> 

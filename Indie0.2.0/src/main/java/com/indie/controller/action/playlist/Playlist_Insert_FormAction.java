@@ -24,7 +24,7 @@ public class Playlist_Insert_FormAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("Playlist_Insert_FormAction 실행");
 		
-		String url = "playlist/playlist_insert.jsp";
+		String url = "playlist/playlist_insert_form.jsp";
 		
 		// 현재 나의 플레이리스트 목록(My_Playlist)
 		
