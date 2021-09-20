@@ -37,7 +37,6 @@ import com.indie.controller.action.member.IdCheckFormAction;
 import com.indie.controller.action.member.JoinAction;
 import com.indie.controller.action.member.LoginAction;
 import com.indie.controller.action.member.LogoutAction;
-import com.indie.controller.action.music.AddListAction;
 import com.indie.controller.action.music.AllBalladMusicAction;
 import com.indie.controller.action.music.AllDanceMusicAction;
 import com.indie.controller.action.music.AllHiphopMusicAction;
@@ -56,7 +55,11 @@ import com.indie.controller.action.music.KorHiphopMusicAction;
 import com.indie.controller.action.music.KorIndieMusicAction;
 import com.indie.controller.action.music.KorNewMusicAction;
 import com.indie.controller.action.music.KorPopMusicAction;
+import com.indie.controller.action.music.LyricsDetailAction;
 import com.indie.controller.action.music.MusicDetailAction;
+import com.indie.controller.action.music.RandomAction;
+import com.indie.controller.action.music.RandomFormAction;
+import com.indie.controller.action.playlist.Add_Song_PlaylistAction;
 import com.indie.controller.action.playlist.Add_Song_Playlist_FormAction;
 import com.indie.controller.action.playlist.Play_PlaylistAction;
 import com.indie.controller.action.playlist.Playlist_DeleteAction;
@@ -142,46 +145,52 @@ public class ActionFactory {
 		}
 		
 		// music part
-		else if (command.equals("index")) {
+		else if(command.equals("index")) {
 			action = new IndexAction();
-		} else if (command.equals("AllPopular")) {
+		}else if(command.equals("AllPopular")) {
 			action = new AllPopMusicAction();
-		} else if (command.equals("KorPopular")) {
+		}else if(command.equals("KorPopular")) {
 			action = new KorPopMusicAction();
-		} else if (command.equals("ForPopular")) {
+		}else if(command.equals("ForPopular")) {
 			action = new ForPopMusicAction();
-		} else if (command.equals("AllNewest")) {
+		}else if(command.equals("AllNewest")) {
 			action = new AllNewMusicAction();
-		} else if (command.equals("KorNewest")) {
+		}else if(command.equals("KorNewest")) {
 			action = new KorNewMusicAction();
-		} else if (command.equals("ForNewest")) {
+		}else if(command.equals("ForNewest")) {
 			action = new ForNewMusicAction();
-		} else if (command.equals("KorBallad")) {
+		}else if(command.equals("KorBallad")) {
 			action = new KorBalladMusicAction();
-		} else if (command.equals("KorDance")) {
+		}else if(command.equals("KorDance")) {
 			action = new KorDanceMusicAction();
-		} else if (command.equals("KorHiphop")) {
+		}else if(command.equals("KorHiphop")) {
 			action = new KorHiphopMusicAction();
-		} else if (command.equals("KorIndie")) {
+		}else if(command.equals("KorIndie")) {
 			action = new KorIndieMusicAction();
-		} else if (command.equals("ForBallad")) {
+		}else if(command.equals("ForBallad")) {
 			action = new ForBalladMusicAction();
-		} else if (command.equals("ForDance")) {
+		}else if(command.equals("ForDance")) {
 			action = new ForDanceMusicAction();
-		} else if (command.equals("ForHiphop")) {
+		}else if(command.equals("ForHiphop")) {
 			action = new ForHiphopMusicAction();
-		} else if (command.equals("ForIndie")) {
+		}else if(command.equals("ForIndie")) {
 			action = new ForIndieMusicAction();
-		} else if (command.equals("AllBallad")) {
+		}else if(command.equals("AllBallad")) {
 			action = new AllBalladMusicAction();
-		} else if (command.equals("AllDance")) {
+		}else if(command.equals("AllDance")) {
 			action = new AllDanceMusicAction();
-		} else if (command.equals("AllHiphop")) {
+		}else if(command.equals("AllHiphop")) {
 			action = new AllHiphopMusicAction();
-		} else if (command.equals("AllIndie")) {
+		}else if(command.equals("AllIndie")) {
 			action = new AllIndieMusicAction();
-		} else if (command.equals("music_detail")) {
+		}else if(command.equals("music_view")) {
 			action = new MusicDetailAction();
+		}else if(command.equals("lyrics_detail")) {
+			action = new LyricsDetailAction();
+		}else if(command.equals("random_form")) {
+			action = new RandomFormAction();
+		}else if(command.equals("random_action")) {
+			action = new RandomAction();
 		}
 		// 로그인 회원가입 파트
 		else if (command.equals("login")) {
@@ -226,8 +235,10 @@ public class ActionFactory {
 			action = new Playlist_Delete_SongAction();
 		}else if(command.equals("Add_Song_Playlist_Form")) { // 플레이리스트 곡 추가 Form
 			action = new Add_Song_Playlist_FormAction();
-		}else if(command.equals("AddList")) { // 플레이리스트에 곡 담기
-			action = new AddListAction();
+		}else if(command.equals("addList")) { // 플레이리스트에 곡 담기
+			action = new Add_Song_PlaylistAction();
+		}else if(command.equals("addlist_form")) { // 플레이리스트에 곡 담는 form
+			action = new Add_Song_Playlist_FormAction();
 		}
 		// 관리자 검색기능
 		else if (command.equals("search")) {

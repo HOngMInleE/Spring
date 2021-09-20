@@ -19,11 +19,14 @@ public class AllPopMusicAction implements Action {
 		// TODO 자동 생성된 메소드 스텁
 		String url = "/music/allPopChart.jsp";
 		
+		String value = request.getParameter("B1");
+		
 		MusicDAO musicDAO = MusicDAO.getInstance();
 		
 		ArrayList<MusicVO> getAllPopular = (ArrayList<MusicVO>) musicDAO.getAllPopular();
 		
 		request.setAttribute("getAllPopular", getAllPopular);
+		request.setAttribute("value", value);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

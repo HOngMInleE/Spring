@@ -41,12 +41,11 @@
 						<img class="logo" alt="로고이미지" src="${pageContext.request.contextPath}/img/common/logo_01.png">
 					</a>
 					<div class="search">
-						<form action="">
-							<input class="searchKeyword" type="text" name="searchKeyword" size="50">
-							<a class="searchIcon" href="IndieServlet" onclick="search()">
-								<img src="${pageContext.request.contextPath}/img/common/icon_search.png"
-									onclick="go_search()">
-							</a>
+						<form action="${pageContext.request.contextPath}/IndieServlet?command=search" method="post">
+							<input class="searchKeyword" type="text" name="searchKeyword" size="50" value="" placeholder="검색할 값을 작성해주세요.">
+							<input type="hidden" name="tableName" value="main_music">
+							<input class="searchIcon" type="image" type="submit" value="검색" src="${pageContext.request.contextPath}/img/common/icon_search.png"
+								style="position: relative; left: -50px; top: 7.5px; z-index: 2;" >
 						</form>
 					</div>
 				</div>

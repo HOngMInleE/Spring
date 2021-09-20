@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.indie.dto.BoardVO;
 import com.indie.dto.MusicVO;
 
 import util.DBManager;
@@ -764,6 +765,44 @@ public class MusicDAO {
 		}
 
 		return musicList;
+
+	}
+	
+	public MusicVO getRandom(int num) {
+		MusicVO musicVO = null;
+		String sql = "select * from music where m_id = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				musicVO = new MusicVO();
+				musicVO.setM_id(rs.getInt("M_ID"));
+				musicVO.setM_genre(rs.getString("M_GENRE"));
+				musicVO.setM_nation(rs.getString("M_NATION"));
+				musicVO.setM_name(rs.getString("M_NAME"));
+				musicVO.setM_artist(rs.getString("M_ARTIST"));
+				musicVO.setM_album(rs.getString("M_ALBUM"));
+				musicVO.setM_album_pic(rs.getString("M_ALBUM_PIC"));
+				musicVO.setM_lyrics(rs.getString("M_LYRICS"));
+				musicVO.setM_playcnt(rs.getInt("M_PLAYCNT"));
+				musicVO.setM_indate(rs.getTimestamp("M_INDATE"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+
+		return musicVO;
 
 	}
 

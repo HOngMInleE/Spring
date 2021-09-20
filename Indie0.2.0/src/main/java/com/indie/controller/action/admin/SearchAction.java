@@ -67,6 +67,13 @@ public class SearchAction implements Action {
 
 			request.getRequestDispatcher(url).forward(request, response);
 
+		}else if (searchVO.getTableName().equals("main_music")) { //메인화면 검색기능
+			url = "/main_search_music.jsp";
+			ArrayList<MusicVO> musicInfoList = searchDAO.searchKeywordInMusic(searchVO);
+			request.setAttribute("musicInfoList", musicInfoList);
+			request.setAttribute("searchKeyword", searchKeyword);
+			
+			request.getRequestDispatcher(url).forward(request, response);
 		}
 	}
 

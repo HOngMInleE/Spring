@@ -46,6 +46,19 @@
 	<div class="subNavWrap">
 		<div class="title">
 			<img src="${pageContext.request.contextPath}/img/common/icon_genre.png" alt="">
+			<span class="navName">추천음악</span>
+		</div>
+		<br>
+		<ul>
+			<li class="list">
+				<a class="navbtn" href="IndieServlet?command=random_form"> - 랜덤추천 </a>
+			</li>
+			<br>
+		</ul>
+	</div>
+	<div class="subNavWrap">
+		<div class="title">
+			<img src="${pageContext.request.contextPath}/img/common/icon_genre.png" alt="">
 			<span class="navName">장르</span>
 		</div>
 		<br>

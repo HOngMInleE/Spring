@@ -105,17 +105,17 @@ div {
 		</style>
 	<!-- <script type="text/javascript">
 	function add_playlist() {
-		var url = "IndieServlet?command=Playlist_Insert_FormAction";
+		var url = "IndieServlet?command=Playlist_Add_FormAction&m_id";
 		window.open(url, "_blank_1",
-				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300, ");
+				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=600, top=300, left=300, ");
 		}
-	</script> -->
+	</script>  -->
 <article class="playlist_wrap">
 	<dl class="top_menu">
 		<dt class="sub_title"> 플레이리스트 정보 </dt>
-		<dt class="playlist_add">
+		<!-- <dt class="playlist_add">
 			<button onclick="my_playlist()">담기</button>
-		</dt>
+		</dt> -->
 		<dt class="playlist_title">
 			${pl_title}
 		</dt>
