@@ -78,7 +78,8 @@ tr.list {
 	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	height: 80px;
+	height: 50px;
+	overflow: hidden;
 }
 
 tr.list:hover {
@@ -96,7 +97,6 @@ th.thead {
 }
 
 td.tdframe {
-	height: 80px;
 	border-bottom: gray 1px solid;
 }
 
@@ -154,7 +154,7 @@ td.tdtitle {
 							<td class="tdframe" width="100px">
 								<span style="font-size: 20px; color: #4C4C4C;">${boardInfo.b_category}</span>
 							</td>
-							<td class="tdframe tdtitle" width="30%" height="80px">
+							<td class="tdframe tdtitle" width="30%">
 								<span style="font-size: 20px; color: #4C4C4C;">${boardInfo.b_title}</span>
 							</td>
 							<td class="tdframe">

@@ -50,20 +50,17 @@ div {
 			dt.playlist_make .make {
 				width: 300px;
 			}
-			dt.playlist_make .submit {
-				font-size: 20px;
-			}
 
-			dt button{
+			dt.playlist_make .submit{
 			  color:#8C8C8C;
 			  background-color: #fff;
 			  border:1px solid #8C8C8C;
-			  font-size:1.2em;
+   			  font-size: 20px;
 			  font-weight:bold;
 			  padding:0 15px;
 			  cursor:pointer;
 			}
-			button:hover{
+			dt.playlist_make .submit:hover{
 			  background:#000000;
 			  color:#fff;
 			}
