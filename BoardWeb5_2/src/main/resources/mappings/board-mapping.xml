@@ -35,11 +35,15 @@
 		select * from board1 where seq=#{seq}
 		]]>
 	</select>
-	<select id="getBoardList" resultType="board">
-		<![CDATA[
+	<select id="getBoardList" resultType="boardResult">
 		select * from board1 
-		where title like '%'||#{searchKeyword}||'%' 
-		order by seq desc
-		]]>
+		where 1=1
+		<if test="searchCondition == 'TITLE'">
+			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY SEQ DESC
 	</select>
 </mapper>
