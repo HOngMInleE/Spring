@@ -103,6 +103,18 @@ div {
 		</dl>
 		<hr color="grey" style="margin:10px 0 10px 0; height: 1px;">
 		<table class="playlist_content">
+			<div class="hide" style="display: none;">
+				<form name="onoff" class="formm" action="IndieServlet?command=AllPopular" method="post">
+					<input type="button" value="음악켜기" name="B1">
+					<!-- onClick="changeButton()" -->
+					<audio id="audio" onended="javascript:nextPlay();">
+						<source src="stay.mp3">
+						<source src="stay.mp3">
+						<source src="stay.mp3">
+						<%-- <source src="${my_playlist.m_name}.mp3"> --%>
+					</audio>
+				</form>
+			</div>
 			<tr class="list_title">
 				<th>NO</th><th>플레이리스트 정보</th><th>전체 듣기</th><th>삭제</th>
 			</tr>
@@ -121,9 +133,9 @@ div {
 						</span>
 					</td>
 					<td class="icon">
-						<a href="IndieServlet?command=Play_PlaylistAction&pl_num=${my_playlist.pl_num}">
-							<img width="30" height="30" src="img/chart/icon_playBefore.png"/>
-						</a>
+						<button type="submit" onclick="changeButton()">
+							<img src="./img/chart/icon_playBefore.png"/>
+						</button>
 					</td>
 					<td class="icon">
 						<a href="IndieServlet?command=Playlist_Delete&pl_num=${my_playlist.pl_num}">
@@ -134,8 +146,39 @@ div {
 			</c:forEach>
 		</table>
 	</article>
-		
-		
 	</div>
 </div>
+<script>
+/* function play() {
+	var audio = document.getElementById("audio");
+	audio.play();
+} */
+
+function nextPlay(){
+	document.getElementById("audio").src = "stay.mp3";
+
+	var media = document.getElementById("audio");
+
+	media.currentTime = 0;
+	media.volume = 0.1;
+	media.play();
+
+	}
+
+function pause() {
+	var audio = document.getElementById("audio");
+	audio.pause();
+}
+
+
+function changeButton() {
+  if (document.onoff.B1.value=='음악끄기') {
+    document.onoff.B1.value='음악켜기';
+    pause();
+  } else {
+    document.onoff.B1.value='음악끄기';
+    nextPlay();
+  }
+}
+</script>
 <%@ include file="/footer.jsp"%>
