@@ -116,11 +116,11 @@ td.tdtitle {
 				</div>
 				<form action="${pageContext.request.contextPath}/IndieServlet?command=search" method="post">
 					<div id="searchWrap">
-						<select name="searchCondition" class="searchCondition">
+						<!-- <select name="searchCondition" class="searchCondition">
 							<option value="b_title">제목</option>
 							<option value="b_content">내용</option>
 							<option value="b_num">글번호</option>
-						</select>
+						</select> -->
 						<input type="hidden" name="tableName" value="board">
 						<input class="searchKeyword" type="text" name="searchKeyword" value="" placeholder="검색할 값을 작성해주세요.">
 						<input class="searchBtn" type="submit" value="검색">

@@ -111,10 +111,10 @@ td.tdframe {
 				<form action="${pageContext.request.contextPath}/IndieServlet?command=search"
 					method="post">
 					<div id="searchWrap">
-						<select name="searchCondition" class="searchCondition">
+						<!-- <select name="searchCondition" class="searchCondition">
 							<option value="adm_name">아이디</option>
 							<option value="adm_num">관리자번호</option>
-						</select>
+						</select> -->
 						<input type="hidden" name="tableName" value="admin">
 						<input class="searchKeyword" type="text" name="searchKeyword" value="" placeholder="검색할 값을 작성해주세요.">
 						<input class="searchBtn" type="submit" value="검색">
