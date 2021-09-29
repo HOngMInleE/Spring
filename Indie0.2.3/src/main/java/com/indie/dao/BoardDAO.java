@@ -24,6 +24,10 @@ public class BoardDAO {
 	private PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
+// Paing  페이지 번호 부여
+	
+	
+	
 // CRUD
 // Create (insert)
 	// 게시글 저장
@@ -82,15 +86,55 @@ public class BoardDAO {
 	}
 	
 // Read (List)
-	// 전체 게시글 최신순 정렬 
-	public ArrayList<BoardVO> getBoardListByNewest() { //(main 페이지에 들어감)
-			
-		ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
-		String sql= "select * from board order by b_regdate desc";
+	// 전체 게시글 최신순 정렬 // paing
+		public ArrayList<BoardVO> getBoardListByNewest() { //(main 페이지에 들어감)
+			String sql= "select * from board order by b_regdate desc";
+			 ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+			try {
+			  conn = DBManager.getConnection();
+		      pstmt = conn.prepareStatement(sql);
+		      rs = pstmt.executeQuery();
+		      
+		      while (rs.next()) {
+		    	  	BoardVO boardVO = new BoardVO();	
+		    	  	boardVO.setB_num(rs.getInt("b_num"));
+		    	  	boardVO.setAdm_num(rs.getInt("adm_num"));
+		    	  	boardVO.setB_picture(rs.getString("b_picture"));
+		    	  	boardVO.setB_category(rs.getString("b_category"));
+		    	  	boardVO.setB_title(rs.getString("b_title"));
+		    	  	boardVO.setB_content(rs.getString("b_content"));
+		    	  	boardVO.setB_readCnt(rs.getInt("b_readCnt"));
+					boardVO.setB_regDate(rs.getTimestamp("b_regDate"));
+					boardVO.setB_upDate(rs.getTimestamp("b_upDate"));
+					boardList.add(boardVO);
+		      }
+			} catch (Exception e) {
+			      e.printStackTrace();
+			      System.out.println("getBoardListByNewest() 오류");
+			} finally {
+			  DBManager.close(conn, pstmt, rs);
+			}
+			return boardList;	
+		}
 		
+	// 전체 게시글 최신순 정렬 // paing
+	public ArrayList<BoardVO> getBoardListByNewestPaging(int page) { //(main 페이지에 들어감)
+		// 1번 페이지 1~10
+		// 2번 페이지 11~20
+		int startNum = (page-1) * 5 + 1;
+		int endNum = page * 5;
+		 String sql = "SELECT * FROM ("
+	                + "SELECT * FROM ("
+	                + "SELECT ROWNUM row_num, board.* FROM board"
+	                + ") WHERE row_num >= ?"
+	                + ") WHERE row_num <= ? order by b_regdate desc";
+//		String sql= "select * from board order by b_regdate desc";
+		 ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 		  conn = DBManager.getConnection();
 	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setInt(1, startNum);
+	      pstmt.setInt(2, endNum);
 	      rs = pstmt.executeQuery();
 	      
 	      while (rs.next()) {
@@ -108,7 +152,7 @@ public class BoardDAO {
 	      }
 		} catch (Exception e) {
 		      e.printStackTrace();
-		      System.out.println("getBoardListByNewest() 오류");
+		      System.out.println("getBoardListByNewestPaging() 오류");
 		} finally {
 		  DBManager.close(conn, pstmt, rs);
 		}

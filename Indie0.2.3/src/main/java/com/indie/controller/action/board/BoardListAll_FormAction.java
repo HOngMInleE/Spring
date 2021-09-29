@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.indie.controller.action.Action;
 import com.indie.dao.BoardDAO;
 import com.indie.dto.BoardVO;
+import com.indie.dto.PageVO;
 
 public class BoardListAll_FormAction implements Action {
 
@@ -22,11 +23,21 @@ public class BoardListAll_FormAction implements Action {
 		
 		String url = "board/boardList.jsp";
 		
-		List<BoardVO> boardList = boardDAO.getBoardListByNewest();
+		int page = 1;
+		
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		PageVO paging = new PageVO();
+		paging.setPage(page);
+		paging.setTotalCount(351);
+		
+		List<BoardVO> boardList = boardDAO.getBoardListByNewestPaging(page);
 		String title_category = request.getParameter("b_category");
 		
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("title_category", title_category);
+		request.setAttribute("paging", paging);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
