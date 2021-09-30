@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.indie.dto.BoardVO;
+import com.indie.dto.PageVO;
 
 import util.DBManager;
 
@@ -118,11 +119,14 @@ public class BoardDAO {
 		}
 		
 	// 전체 게시글 최신순 정렬 // paing
-	public ArrayList<BoardVO> getBoardListByNewestPaging(int page) { //(main 페이지에 들어감)
+	public ArrayList<BoardVO> getBoardListByNewestPaging(PageVO paging) { //(main 페이지에 들어감)
 		// 1번 페이지 1~10
 		// 2번 페이지 11~20
-		int startNum = (page-1) * 5 + 1;
-		int endNum = page * 5;
+		int startNum = (paging.getPage() - 1) * 5 + 1;
+		int endNum = paging.getPage() * 5;
+//		int startNum = paging.getStartNum();
+//	    int endNum = paging.getEndNum();
+	    
 		 String sql = "SELECT * FROM ("
 	                + "SELECT * FROM ("
 	                + "SELECT ROWNUM row_num, board.* FROM board"
@@ -193,6 +197,52 @@ public class BoardDAO {
 		return boardList;	
 	}
 		
+	// 게시글 카테고리별 출력  // paing
+		public ArrayList<BoardVO> getBoardListByCategoryPaging(String category,PageVO paging) { //(매개값 : 카테고리)
+			// 1번 페이지 1~10
+			// 2번 페이지 11~20
+			int startNum = (paging.getPage() - 1) * 5 + 1;
+			int endNum = paging.getPage() * 5;
+//			int startNum = paging.getStartNum();
+//		    int endNum = paging.getEndNum();
+		    
+			 String sql = "SELECT * FROM ("
+		                + "SELECT * FROM ("
+		                + "SELECT ROWNUM row_num, board.* FROM board where b_category=?"
+		                + ") WHERE row_num >= ?"
+		                + ") WHERE row_num <= ? order by b_regdate desc";
+//			String sql= "select * from board order by b_regdate desc";
+			 ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+			try {
+			  conn = DBManager.getConnection();
+		      pstmt = conn.prepareStatement(sql);
+		      pstmt.setString(1, category);
+		      pstmt.setInt(2, startNum);
+		      pstmt.setInt(3, endNum);
+		      rs = pstmt.executeQuery();
+		      
+		      while (rs.next()) {
+		    	  	BoardVO vo = new BoardVO();
+			    	vo.setB_num(rs.getInt("b_num"));
+			    	vo.setAdm_num(rs.getInt("adm_num"));
+		    	  	vo.setB_picture(rs.getString("b_picture"));
+		    	  	vo.setB_category(rs.getString("b_category"));
+					vo.setB_title(rs.getString("b_title"));
+					vo.setB_content(rs.getString("b_content"));
+					vo.setB_readCnt(rs.getInt("b_readCnt"));
+					vo.setB_regDate(rs.getTimestamp("b_regDate"));
+					vo.setB_upDate(rs.getTimestamp("b_upDate"));
+					boardList.add(vo);
+		      }
+			} catch (Exception e) {
+			      e.printStackTrace();
+			      System.out.println("getBoardListByCategoryPaging() 오류");
+			} finally {
+			  DBManager.close(conn, pstmt, rs);
+			}
+			return boardList;	
+		}	
+		
 		
 // Update (update)
 	// 게시글 수정 
@@ -248,6 +298,46 @@ public class BoardDAO {
 			} finally {
 				DBManager.close(conn, pstmt);
 			}
+	}
+	
+	// 모든 게시글 개수 출력
+	public int getAllCount() {
+		 String sql = "SELECT COUNT(*) as count FROM board";
+		    int count = 0;
+		    try{
+		    	conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+		        rs= pstmt.executeQuery(sql);
+		        if(rs.next()){
+		            count = rs.getInt("count");
+		        }
+		    }catch(Exception e){
+		        e.printStackTrace();
+		    }finally{
+		        DBManager.close(conn, pstmt, rs);
+		    }
+		    return count;
+	}
+	
+	// 카테고리별 게시글 갯수 출ㄹㅕㄱ
+	public int getCategoryCount(String category) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT COUNT(*) as count FROM board where b_category=? ";
+	    int count = 0;
+	    try{
+	    	conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, category);
+	        rs= pstmt.executeQuery(sql);
+	        if(rs.next()){
+	            count = rs.getInt("count");
+	        }
+	    }catch(Exception e){
+	        e.printStackTrace();
+	    }finally{
+	        DBManager.close(conn, pstmt, rs);
+	    }
+	    return count;
 	}
 	
 	

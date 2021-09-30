@@ -24,16 +24,20 @@ public class BoardListAll_FormAction implements Action {
 		String url = "board/boardList.jsp";
 		
 		int page = 1;
-		
+
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		PageVO paging = new PageVO();
-		paging.setPage(page);
-		paging.setTotalCount(351);
 		
-		List<BoardVO> boardList = boardDAO.getBoardListByNewestPaging(page);
+		int count = boardDAO.getAllCount();
+		
+		paging.setPage(page);	// 현재 페이지
+		paging.setTotalCount(count);	// 전체 레코드의 갯수
+		
+		List<BoardVO> boardList = boardDAO.getBoardListByNewestPaging(paging);
 		String title_category = request.getParameter("b_category");
+		
 		
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("title_category", title_category);

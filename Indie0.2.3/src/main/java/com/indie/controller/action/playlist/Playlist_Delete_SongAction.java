@@ -17,17 +17,19 @@ public class Playlist_Delete_SongAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		System.out.println("Playlist_DeleteAction 실행");
-		String url = "playlist/playlist_detail.jsp";
+		
+//		String url = "playlist/playlist_detail.jsp";
+//		String url = "location.reload()";
 		
 		HttpSession session = request.getSession();
 		PlaylistDAO plDAO = PlaylistDAO.getInstance();
 		
 		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
 		int pl_num = Integer.parseInt(request.getParameter("pl_num"));
-//		int m_id = Integer.parseInt(request.getParameter("m_id"));
+		String pl_title = request.getParameter("pl_title");
 		
+//		int m_id = Integer.parseInt(request.getParameter("m_id"));
 		String[] m_idArr = request.getParameterValues("m_id");
 		
 		for(String m_id : m_idArr) {
@@ -35,9 +37,9 @@ public class Playlist_Delete_SongAction implements Action {
 			plDAO.deleteSongsInPlaylist(loginUser.getMb_id(), pl_num,Integer.parseInt(m_id));
 		}
 		
+		String url = "IndieServlet?command=Playlist_Detail_Form&pl_num=" + pl_num + "&pl_title=" + pl_title;
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

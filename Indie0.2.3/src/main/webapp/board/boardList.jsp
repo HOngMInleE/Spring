@@ -8,6 +8,7 @@
 // ex) if (category.equals("News") { : getBoardListByCategory(String category) { 
 // category = ? pstmt.setString(request.getParameter(category)) //category가 news인 컬럼들을 찾아 출력하는 메소드 
 List<BoardVO> boardList = (List<BoardVO>) request.getAttribute("boardList");
+String category = request.getParameter("b_category");
 // String title_category = (String) request.getAttribute("title_category");
 %>
 <div id="mid" class="frame">
@@ -208,11 +209,18 @@ dt.board_category {
 							<dl style="height: 135px;">
 								<dt class="list_title">${boardList.b_title}</dt>
 								<dd class="list_content">${boardList.b_content}</dd>
-							</dl>
+				 			</dl>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
+			<jsp:include page="Paging.jsp">
+			    <jsp:param value="${paging.page}" name="page"/>
+			    <jsp:param value="${paging.beginPage}" name="beginPage"/>
+			    <jsp:param value="${paging.endPage}" name="endPage"/>
+			    <jsp:param value="${paging.prev}" name="prev"/>
+			    <jsp:param value="${paging.next}" name="next"/>
+			</jsp:include>
 		</article>
 	</div>
 	<!-- grid2 div -->

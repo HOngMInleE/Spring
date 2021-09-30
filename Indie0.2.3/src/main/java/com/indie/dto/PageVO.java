@@ -10,6 +10,25 @@ public class PageVO {
 	private int displayPage = 10; // 한 번에 표시할 페이지의 갯수를 넣어줄 변수 (선택 set)
 	boolean prev; // prev 버튼이 보일건지 안보일건지
 	boolean next; // next 버튼이 보일건지 안보일건지
+	private int startNum;
+	private int endNum;
+	
+	
+	public int getStartNum() {
+		return startNum;
+	}
+
+	public void setStartNum(int startNum) {
+		this.startNum = startNum;
+	}
+
+	public int getEndNum() {
+		return endNum;
+	}
+
+	public void setEndNum(int endNum) {
+		this.endNum = endNum;
+	}
 
 	public int getPage() {
 		return page;
@@ -62,7 +81,14 @@ public class PageVO {
 		return next;
 	}
 
+	
+
+		
 	private void paging() {
+		
+		startNum = (page-1)*displayRow+1;
+		endNum = page*displayRow;
+		
 		// prev, next, beginPage, endPage를 계산해서 만든다.
 		// 2+9 = 11, 11/10 = 1, 1*10 = 10
 		// 10+9 = 19, 19/10 = 1, 1*10 = 10

@@ -53,7 +53,7 @@ div {
 				margin-top: 30px;
 			}
 			
-			dt button{
+			/* dt button{
 			  color:#8C8C8C;
 			  background-color: #fff;
 			  border:1px solid #8C8C8C;
@@ -66,7 +66,7 @@ div {
 			button:hover{
 			  background:#000000;
 			  color:#fff;
-			}
+			} */
 			
 			table.playlist_content{
 				width:720px;
@@ -155,7 +155,7 @@ div {
 					</a>
 				</td>
 				<td class="icon">
-					<a href="IndieServlet?command=Play_Delete_Song&m_id=${playlist_songs.m_id}&pl_num=${pl_num}" onClick="history.go(0)">
+					<a href="IndieServlet?command=Play_Delete_Song&m_id=${playlist_songs.m_id}&pl_num=${pl_num}&pl_title=${pl_title}">
 						<img width="30" height="30" src="img/chart/icon_Delete.png"/>
 					</a>
 				</td>
