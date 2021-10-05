@@ -307,7 +307,7 @@ public class BoardDAO {
 		    try{
 		    	conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
-		        rs= pstmt.executeQuery(sql);
+		        rs= pstmt.executeQuery();
 		        if(rs.next()){
 		            count = rs.getInt("count");
 		        }
@@ -328,7 +328,7 @@ public class BoardDAO {
 	    	conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, category);
-	        rs= pstmt.executeQuery(sql);
+	        rs= pstmt.executeQuery();
 	        if(rs.next()){
 	            count = rs.getInt("count");
 	        }

@@ -66,6 +66,44 @@ function changeButton() {
     play();
   }
 }
+
+	function change(form) {
+		if (form.url.selectedIndex != 0)
+			parent.location = form.url.options[form.url.selectedIndex].value
+	}
+	
+	function setCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + "=" + escape(value) + "; path=/; expires="
+				+ todayDate.toGMTString() + ";"
+	}
+	
+	function getCookie(name) {
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while (x <= document.cookie.length) {
+			var y = (x + nameOfCookie.length);
+			if (document.cookie.substring(x, y) == nameOfCookie) {
+				if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+					endOfCookie = document.cookie.length;
+				return unescape(document.cookie.substring(y, endOfCookie));
+			}
+			x = document.cookie.indexOf(" ", x) + 1;
+			if (x == 0)
+				break;
+		}
+		return "";
+	}
+	
+	if (getCookie("Notice") != "done") {
+		noticeWindow = window.open(
+						'main_popup.jsp',
+						'notice',
+						'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=450,height=400');//이부분을 자기에 맞게 변경하세요
+		noticeWindow.opener = self;
+	}
+// -->
 </script>
 
 <article class="allchart">
