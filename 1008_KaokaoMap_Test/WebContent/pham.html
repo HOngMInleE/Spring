@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Api</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<h1>중구 약국 정보</h1>
+	<button onclick="pham()">펼쳐 보기</button>
+	<br><br><br>
+	<script>
+		function pham() {
+			var url = "https://api.odcloud.kr/api/3080366/v1/uddi:2531e2e1-2c46-49ca-8c32-c7d6a29e11a0_201906041751?page=1&perPage=30&serviceKey=3F5WWLf%2BLG%2BFJlX6TU7f1Qk5qB1qJioxcWHaKgytnw9LCv%2FwSAPnBKfQ5SIKEww1NTghECyrKwrWaeLLR3uoZQ%3D%3D";
+			
+			$.getJSON(url, function(result){
+				var data = result.data;	// 넘어온 data(result)에서 data 값만 가져옴
+				console.log(data);
+				
+//				$("body").append("약국 명칭" + "약국 소재지(도로명)" + "약국 전화번호&nbsp;&nbsp;&nbsp;" + "약국 행정동&nbsp;&nbsp;&nbsp;" + "<br><br><br>");
+				/* $.each(data,function(i,d){
+					$("body").append(d.약국명칭 +"&nbsp;&nbsp;"+ d["약국소재지(도로명)"] +"&nbsp;&nbsp;"+ d.약국전화번호 +"&nbsp;&nbsp;" + d.약국행정동 +"<br><br>");
+				}); */
+				if(data.length > 0) {
+					var tb = $("<table border=1/>");
+						/* var tr_title = $("<tr />").append(
+								$("<td />").text("약국 명칭"),
+								$("<td />").text("약국 소재지(도로명)"),
+								$("<td />").text("약국 전화번호"),
+								$("<td />").text("약국 행정동")
+							);// tr_title */
+						$(tb).append("<th>약국명칭</th><th>약국소재지(도로명)</th><th>약국전화번호</th><th>약국행정동</th>");
+						
+						$.each(data, function(i,d){
+							var row = $("<tr />").append(
+										$("<td />").text(d["약국명칭"]),
+										$("<td />").text(d["약국소재지(도로명)"]),
+										$("<td />").text(d["약국전화번호"]),
+										$("<td />").text(d["약국행정동"])
+									);
+							tb.append(row);
+						});//each
+					$("body").append(tb)
+				}//if
+			});//getJSON
+		}
+	</script>
+</body>
+</html>
+
+
