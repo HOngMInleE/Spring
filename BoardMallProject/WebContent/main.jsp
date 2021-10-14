@@ -119,102 +119,259 @@
 
 	<!-- 베스트 상품 -->
 	<div class="clear"></div>
-
 	<div class="album py-5">
 		<h2>베스트 게임</h2>
-		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
-			<div class="col">
-				<div class="card shadow-sm">
-					<svg class="bd-placeholder-img card-img-top" width="100%"
-						height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-					<div class="card-body"></div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card shadow-sm">
-					<svg class="bd-placeholder-img card-img-top" width="100%"
-						height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-					<div class="card-body">
-						<p class="card-text">This is a wider card with supporting text
-							below as a natural lead-in to additional content. This content is
-							a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-							</div>
-							<small class="text-muted">9 mins</small>
+		<div class="row row-cols-sm-2 g-3 ">
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
-			<div class="col">
-				<div class="card shadow-sm">
-					<svg class="bd-placeholder-img card-img-top" width="100%"
-						height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-					<div class="card-body">
-						<p class="card-text">This is a wider card with supporting text
-							below as a natural lead-in to additional content. This content is
-							a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-							</div>
-							<small class="text-muted">9 mins</small>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
-
-			<div class="col">
-				<div class="card shadow-sm">
-					<svg class="bd-placeholder-img card-img-top" width="100%"
-						height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-					<div class="card-body">
-						<p class="card-text">This is a wider card with supporting text
-							below as a natural lead-in to additional content. This content is
-							a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-								<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-							</div>
-							<small class="text-muted">9 mins</small>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 1번째 줄 end -->
+			<!-- 2번째 줄 start -->
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
+				<div class="hovereffect border border-2" style="height: 200px;">
+					<a href="#"> <img class="img-responsive w-100 h-100"
+						src="resources/images/LOGO.png" alt="Game">
+						<div class="overlay">
+							<h2 class="fw-bold">Game_Title</h2>
+							<!-- <a class="info" href="#">link here</a> -->
+							<table class="w-100 h-75 text-white py-2">
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/ico_cost.png"></th>
+									<td class="text-end pe-3">Game_price 원</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-start ps-3"><img
+										src="resources/images/best_icon01.png"></th>
+									<td class="text-end pe-3">Game_player 명</td>
+								</tr>
+								<tr class="my-3">
+									<th class="text-star ps-3"><img
+										src="resources/images/best_icon02.png"></th>
+									<td class="text-end pe-3">Game_playtime 분</td>
+								</tr>
+							</table>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- row row-cols-sm-2 g-3 -->
+	</div>
+	<!-- best 상품 end -->
 
+	<!-- 하단 버튼 -->
+	<div class="clear"></div>
+	<div class="row row-cols-sm-2 g-1 text-center mb-5">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<a class="btn btn-outline-primary btn-lg fw-bold border-2 w-75" href="#">
+				FAQ
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<a class="btn btn-outline-dark btn-lg fw-bold border-2 w-75" href="#">
+				Contact
+			</a>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<a class="btn btn-outline-success btn-lg fw-bold border-2 w-75" href="#">
+				Notice
+			</a>
 		</div>
 	</div>
-
-
-</div>
-<!-- container -->
+</div> <!-- container -->
 
 <%@ include file="../footer.jsp"%>
